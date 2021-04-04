@@ -53,7 +53,21 @@ public class SoundManager : MonoBehaviour
         effectSounds[index].PlaySound();
     }
 
-    public void PlayOneShowSoundFindByName(string name)
+    public void PlayMusicFindByName(string name)
+    {
+        try
+        {
+            soundMap[name].StopSound();
+            soundMap[name].PlaySound();
+            soundMap[name].GetComponent<AudioSource>().loop = true;
+        }
+        catch (NullReferenceException)
+        {
+            Debug.LogError("찾을 수 없음: " + name);
+        }
+    }
+
+    public void PlayOneShotSoundFindByName(string name)
     {
         try
         {
