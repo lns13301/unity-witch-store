@@ -10,7 +10,16 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        itemObjects.Add(new ItemObject(
+            new Item(100001, new ItemName("Frog Leg", "개구리 다리"), new SpriteResource("Images/Item/Material/FrogLeg"), new ItemValue(ItemGrade.COMMON, 25, 5), new ItemStat(new ItemStatConsume(5))),
+            100,
+            ItemState.SELL)
+            );
+        itemObjects.Add(new ItemObject(
+            new Item(200001, new ItemName("Red Tonic", "레드 토닉"), new SpriteResource("Images/Item/Potion/RedTonic"), new ItemValue(ItemGrade.RARE, 1000, 200), new ItemStat(new ItemStatConsume(500))),
+            100,
+            ItemState.SELL)
+            );
     }
 
     // Update is called once per frame
@@ -45,7 +54,7 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            SetItemObject(target, new ItemObject(itemObject.item, target.count - itemObject.count));
+            SetItemObject(target, new ItemObject(itemObject.item, target.count - itemObject.count, itemObject.itemState));
         }
     }
 
@@ -92,5 +101,26 @@ public class Inventory : MonoBehaviour
         }
 
         itemObjectSlotFinder = refresh;
+    }
+
+    // Search
+    public List<ItemObject> FindAllItem()
+    {
+        return new List<ItemObject>(itemObjects);
+    }
+
+    public List<ItemObject> FindAllItem(ItemState itemState)
+    {
+        List<ItemObject> result = new List<ItemObject>();
+
+        foreach (ItemObject itemObject in itemObjects)
+        {
+            if (itemObject.itemState.Equals(itemState))
+            {
+                result.Add(itemObject);
+            }
+        }
+
+        return result;
     }
 }

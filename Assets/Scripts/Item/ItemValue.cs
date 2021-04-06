@@ -9,4 +9,11 @@ public class ItemValue
 
     public long purchasePrice;
     public long salePrice;
+
+    public ItemValue(ItemGrade itemGrade, long purchasePrice, long salePrice)
+    {
+        this.itemGrade = itemGrade;
+        this.purchasePrice = purchasePrice;
+        this.salePrice = salePrice;
+    }
 }

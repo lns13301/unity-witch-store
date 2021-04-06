@@ -5,6 +5,8 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class LightController : MonoBehaviour
 {
+    private static float WEIGHT = 0.05f;
+
     private Light2D light2D;
     [SerializeField] private bool isIntensityUp = true;
 
@@ -23,13 +25,11 @@ public class LightController : MonoBehaviour
 
     IEnumerator Repeat()
     {
-        WaitForSeconds waitForSeconds = new WaitForSeconds(0.1f);
-
         while (true)
         {
             ChangeIntensityUp();
             ChangeIntensity();
-            yield return waitForSeconds;
+            yield return null;
         }
     }
 
@@ -49,11 +49,11 @@ public class LightController : MonoBehaviour
     {
         if (isIntensityUp)
         {
-            light2D.intensity += Time.deltaTime;
+            light2D.intensity += Time.deltaTime * WEIGHT;
         }
         else
         {
-            light2D.intensity -= Time.deltaTime;
+            light2D.intensity -= Time.deltaTime * WEIGHT;
         }
     }
 }

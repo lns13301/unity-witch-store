@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Character
   - 
   - 
   - 
@@ -52,4 +52,7 @@ TagManager:
     locked: 0
   - name: ParticleUI
     uniqueID: 3004746559
+    locked: 0
+  - name: SuperUI
+    uniqueID: 1417520847
     locked: 0

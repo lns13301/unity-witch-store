@@ -8,10 +8,11 @@ public class SpriteResource
     public string spritePath;
     public Sprite sprite;
 
-    public SpriteResource(string spritePath, Sprite sprite)
+    public SpriteResource(string spritePath)
     {
         this.spritePath = spritePath;
-        this.sprite = LoadSprite(spritePath);
+
+        sprite = LoadSprite(spritePath);
     }
 
     private Sprite LoadSprite(string spritePath)
