@@ -9,7 +9,7 @@ public class Item
     public ItemName itemName;
     public SpriteResource spriteResource;
 
-    public ItemValue ItemValue;
+    public ItemValue itemValue;
     public ItemStat itemStat;
 
     public Item(int code, ItemName itemName, SpriteResource spriteResource, ItemValue itemValue, ItemStat itemStat)
@@ -17,7 +17,7 @@ public class Item
         this.code = code;
         this.itemName = itemName;
         this.spriteResource = spriteResource;
-        ItemValue = itemValue;
+        this.itemValue = itemValue;
         this.itemStat = itemStat;
     }
 }

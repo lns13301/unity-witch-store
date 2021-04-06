@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemStat : MonoBehaviour
+[System.Serializable]
+public class ItemStat
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public ItemStatConsume itemStatConsume;
 
-    // Update is called once per frame
-    void Update()
+    public ItemStat(ItemStatConsume itemStatConsume)
     {
-        
+        this.itemStatConsume = itemStatConsume;
     }
 }
