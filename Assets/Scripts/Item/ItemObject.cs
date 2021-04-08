@@ -11,8 +11,23 @@ public class ItemObject
 
     public ItemObject(ItemObject itemObject)
     {
-        item = itemObject.item;
-        count = itemObject.count;
+        this.item = itemObject.item;
+        this.count = itemObject.count;
+        this.itemState = itemObject.itemState;
+    }
+
+    public ItemObject(ItemObject itemObject, int count)
+    {
+        this.item = itemObject.item;
+        this.count = count;
+        this.itemState = itemObject.itemState;
+    }
+    
+    public ItemObject(Item item, int count)
+    {
+        this.item = item;
+        this.count = count;
+        this.itemState = ItemState.NONE;
     }
 
     public ItemObject(Item item, int count, ItemState itemState)

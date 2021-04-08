@@ -5,27 +5,36 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private List<ItemObject> itemObjects;
-    [SerializeField] private Dictionary<int, int> itemObjectSlotFinder;
+    private Dictionary<int, int> _itemObjectSlotFinder = new Dictionary<int, int>();
 
     // Start is called before the first frame update
     void Start()
     {
-        itemObjects.Add(new ItemObject(
-            new Item(100001, new ItemName("Frog Leg", "∞≥±∏∏Æ ¥Ÿ∏Æ"), new SpriteResource("Images/Item/Material/FrogLeg"), new ItemValue(ItemGrade.COMMON, 25, 5), new ItemStat(new ItemStatConsume(5))),
-            100,
-            ItemState.SELL)
-            );
-        itemObjects.Add(new ItemObject(
-            new Item(200001, new ItemName("Red Tonic", "∑πµÂ ≈‰¥–"), new SpriteResource("Images/Item/Potion/RedTonic"), new ItemValue(ItemGrade.RARE, 1000, 200), new ItemStat(new ItemStatConsume(500))),
-            100,
-            ItemState.SELL)
-            );
+        InitializeItemTest();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void InitializeItemTest()
+    {
+        // ÏûÑÏãú ÏïÑÏù¥ÌÖú ÏÉùÏÑ± Î∞è Î°úÎìú ÌÖåÏä§Ìä∏
+        Dictionary<int, int> testItemTable = new Dictionary<int, int>();
+        testItemTable.Add(100001, 50);
+        testItemTable.Add(100002, 30);
+        testItemTable.Add(100003, 65);
+        testItemTable.Add(100004, 104);
+        testItemTable.Add(200001, 12);
+
+        itemObjects = ItemDatabase.instance.FindAllItemToItemObject(testItemTable);
+
+        foreach (ItemObject itemObject in itemObjects)
+        {
+            itemObject.itemState = ItemState.SELL;
+        }
     }
 
     // List
@@ -72,7 +81,7 @@ public class Inventory : MonoBehaviour
     {
         try
         {
-            return itemObjectSlotFinder[itemCode];
+            return _itemObjectSlotFinder[itemCode];
         }
         catch
         {
@@ -83,7 +92,7 @@ public class Inventory : MonoBehaviour
     // Dictionary
     private void AddItemObjectToFinder(int itemCode)
     {
-        itemObjectSlotFinder.Add(itemCode, itemObjects.Count - 1);
+        _itemObjectSlotFinder.Add(itemCode, itemObjects.Count - 1);
     }
 
     private void RemoveItemObjectToFinder()
@@ -100,7 +109,7 @@ public class Inventory : MonoBehaviour
             refresh.Add(itemObjects[i].item.code, i);
         }
 
-        itemObjectSlotFinder = refresh;
+        _itemObjectSlotFinder = refresh;
     }
 
     // Search
@@ -122,5 +131,16 @@ public class Inventory : MonoBehaviour
         }
 
         return result;
+    }
+    
+    // File IO
+    public void Save()
+    {
+        
+    }
+    
+    public void Load()
+    {
+        
     }
 }
