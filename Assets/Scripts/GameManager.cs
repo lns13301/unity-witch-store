@@ -4,16 +4,26 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
+    public Language language;
+    
     // Start is called before the first frame update
     void Start()
     {
-        SoundManager.instance.PlayMusic(0);
-        SoundManager.instance.PlayMusic(1);
+        instance = this;
+
+        initialize();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void initialize()
+    {
+        language = Language.KOREAN;
     }
 }

@@ -7,7 +7,7 @@ public class ItemDatabase : MonoBehaviour
     public static ItemDatabase instance;
     
     [SerializeField] private List<Item> items;
-    private Dictionary<int, Item> _itemFinder = new Dictionary<int, Item>();
+    private readonly Dictionary<int, Item> _itemFinder = new Dictionary<int, Item>();
     
     // Start is called before the first frame update
     void Start()
@@ -92,27 +92,32 @@ public class ItemDatabase : MonoBehaviour
     {
         AddItem(new Item(100001,
             new ItemName("Frog Leg", "개구리 다리"),
+            new ItemContent("null", "흔한 소재이지만, 다양한 레시피에 사용되는 기초 재료이다."),
             new SpriteResource("Images/Item/Material/FrogLeg"),
-            new ItemValue(ItemGrade.COMMON, 25, 5), new ItemStat(new ItemStatConsume(5))));
+            new ItemValue(ItemGrade.COMMON, 15, 5), new ItemStat(new ItemStatConsume(5))));
         
         AddItem(new Item(100002,
             new ItemName("Red Bird Feather", "홍조의 깃털"),
+            new ItemContent("null", "붉게 타오르는 불꽃을 빼닮은 특별한 깃털이다."),
             new SpriteResource("Images/Item/Material/RedBirdFeather"), 
-            new ItemValue(ItemGrade.UNCOMMON, 25, 5)));
+            new ItemValue(ItemGrade.UNCOMMON, 125, 80)));
         
         AddItem(new Item(100003, 
             new ItemName("Blue Bird Feather", "청조의 깃털"),
+            new ItemContent("null", "흐르는 강물의 맑고 투명한 청색과 같은 고급스러운 깃털이다."),
             new SpriteResource("Images/Item/Material/BlueBirdFeather"),
-            new ItemValue(ItemGrade.MAGIC, 25, 5)));
+            new ItemValue(ItemGrade.MAGIC, 625, 200)));
         
         AddItem(new Item(100004,
             new ItemName("Red Cherry Flower", "붉은 앵두 꽃"),
+            new ItemContent("null", "봉오리 모양이 마치 탐스러운 앵두를 닮은 아름다운 붉은색 꽃이다."),
             new SpriteResource("Images/Item/Material/RedCherryFlower"),
-            new ItemValue(ItemGrade.COMMON, 25, 5)));
+            new ItemValue(ItemGrade.COMMON, 30, 10)));
 
         AddItem(new Item(200001, 
             new ItemName("Red Tonic", "레드 토닉"),
+            new ItemContent("null", "붉은 꽃을 추출하여 만든 원액을 붉은 깃털로 오랜 시간 정제하여 만든 진한 체력 회복 포션이다."),
             new SpriteResource("Images/Item/Potion/RedTonic"),
-            new ItemValue(ItemGrade.RARE, 1000, 200), new ItemStat(new ItemStatConsume(500))));
+            new ItemValue(ItemGrade.RARE, 1500, 750), new ItemStat(new ItemStatConsume(500))));
     }
 }

@@ -2,19 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class ItemName
+public class ItemContent
 {
     public string english;
     public string korean;
 
-    public ItemName(string english, string korean)
+    public ItemContent(string english, string korean)
     {
         this.english = english;
         this.korean = korean;
     }
     
-    public string GetName(Language language)
+    public string GetContent(Language language)
     {
         switch (language)
         {

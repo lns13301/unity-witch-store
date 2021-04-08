@@ -13,5 +13,6 @@ public enum ItemGrade
     ANCIENT,
     LEGEND,
     MYTHIC,
-    UNIQUE
+    UNIQUE,
+    EVENT
 }
