@@ -11,18 +11,14 @@ public class ShopUI : MonoBehaviour
     [SerializeField] private GameObject panel;
     [SerializeField] private Inventory playerInventory;
     [SerializeField] private List<ItemObject> itemObjects;
+    [SerializeField] private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
-        panel = gameObject;
-
-        SoundManager.instance.PlayMusicFindByName("Bird");
-        SoundManager.instance.PlayMusicFindByName("Shop");
-
-        playerInventory = GameObject.Find("Manager").transform.Find("PlayerInventoryManager").GetComponent<Inventory>();
-        ApplyPlayerInventory();
+        
+        initialize();
     }
 
     // Update is called once per frame
@@ -31,16 +27,21 @@ public class ShopUI : MonoBehaviour
         
     }
 
+    private void initialize()
+    {
+        panel = gameObject;
+        animator = GetComponent<Animator>();
+
+        SoundManager.instance.PlayMusicFindByName("Bird");
+        SoundManager.instance.PlayMusicFindByName("Shop");
+
+        playerInventory = GameObject.Find("Manager").transform.Find("PlayerInventoryManager").GetComponent<Inventory>();
+        ApplyPlayerInventory(); // 테스트용
+    }
+
     public void OnOffPanel()
     {
-        if (panel.activeSelf)
-        {
-            panel.SetActive(false);
-        }
-        else
-        {
-            panel.SetActive(true);
-        }
+        animator.SetBool("isUIOn", !animator.GetBool("isUIOn"));
     }
 
     public void ApplyPlayerInventory()

@@ -17,6 +17,7 @@ public class ShopItemUI : MonoBehaviour
     [SerializeField] private Text price;
     [SerializeField] private Text title;
     [SerializeField] private Text content;
+    [SerializeField] private Animator animator;
     
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,8 @@ public class ShopItemUI : MonoBehaviour
     private void Initialize()
     {
         panel = gameObject;
+        animator = GetComponent<Animator>();
+        
         shopSlot = transform.GetChild(1).GetComponent<ShopSlot>();
         contentPanel = transform.GetChild(2);
         panel.SetActive(false);
@@ -46,6 +49,7 @@ public class ShopItemUI : MonoBehaviour
 
     public void OnPanel(ShopSlot shopSlot, ItemObject itemObject)
     {
+        SoundManager.instance.PlayOneShotSoundFindByName("Paper");
         shopSlotInShop = shopSlot;
         Language language = GameManager.instance.language;
         this.shopSlot.SetItemObject(itemObject);
@@ -57,11 +61,20 @@ public class ShopItemUI : MonoBehaviour
                        NEW_LINE +
                        itemObject.item.Content(language);
         panel.SetActive(true);
+        animator.SetBool("isUIOn", true);
     }
 
     public void OffPanel()
     {
+        SoundManager.instance.PlayOneShotSoundFindByName("ButtonClose");
+        SoundManager.instance.PlayOneShotSoundFindByName("Paper");
         shopSlotInShop.Refresh();
+        Invoke("Off", 0.5f);
+        animator.SetBool("isUIOn", false);
+    }
+
+    public void Off()
+    {
         panel.SetActive(false);
     }
 }

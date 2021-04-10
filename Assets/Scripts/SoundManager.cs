@@ -26,14 +26,28 @@ public class SoundManager : MonoBehaviour
         for (int i = 0; i < transform.GetChild(0).childCount; i++)
         {
             sounds[i] = transform.GetChild(0).GetChild(i).GetComponent<Sound>();
-            soundMap.Add(sounds[i].soundName, sounds[i]);
+            try
+            {
+                soundMap.Add(sounds[i].soundName, sounds[i]);
+            }
+            catch
+            {
+                soundMap.Add(sounds[i].gameObject.name, sounds[i]);
+            }
         }
 
         // 효과음 등록
         for (int i = 0; i < transform.GetChild(1).childCount; i++)
         {
             effectSounds[i] = transform.GetChild(1).GetChild(i).GetComponent<Sound>();
-            soundMap.Add(effectSounds[i].soundName, effectSounds[i]);
+            try
+            {
+                soundMap.Add(effectSounds[i].soundName, effectSounds[i]);
+            }
+            catch
+            {
+                soundMap.Add(effectSounds[i].gameObject.name, effectSounds[i]);
+            }
         }
     }
 
