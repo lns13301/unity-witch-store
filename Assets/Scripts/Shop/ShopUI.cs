@@ -42,6 +42,7 @@ public class ShopUI : MonoBehaviour
     public void OnOffPanel()
     {
         animator.SetBool("isUIOn", !animator.GetBool("isUIOn"));
+        SoundManager.instance.PlayOneShotSoundFindByName("BubblePop");
     }
 
     public void ApplyPlayerInventory()
