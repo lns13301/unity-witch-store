@@ -6,5 +6,6 @@ using UnityEngine;
 public enum ItemState
 {
     NONE,
-    SELL
+    SELL,
+    BUY
 }

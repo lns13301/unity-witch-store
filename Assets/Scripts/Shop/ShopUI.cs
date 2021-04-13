@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class ShopUI : MonoBehaviour
 {
+    private static int CONTENT_COUNT = 3;
+    
     public static ShopUI instance;
 
-    public Transform content;
+    public Transform saleContent;
+    public Transform purchaseContent;
+    public Transform inventoryContent;
+    public ItemState contentType;
 
     [SerializeField] private GameObject panel;
     [SerializeField] private Inventory playerInventory;
@@ -18,7 +23,7 @@ public class ShopUI : MonoBehaviour
     {
         instance = this;
         
-        initialize();
+        Initialize();
     }
 
     // Update is called once per frame
@@ -27,7 +32,7 @@ public class ShopUI : MonoBehaviour
         
     }
 
-    private void initialize()
+    private void Initialize()
     {
         panel = gameObject;
         animator = GetComponent<Animator>();
@@ -36,7 +41,7 @@ public class ShopUI : MonoBehaviour
         SoundManager.instance.PlayMusicFindByName("Shop");
 
         playerInventory = GameObject.Find("Manager").transform.Find("PlayerInventoryManager").GetComponent<Inventory>();
-        ApplyPlayerInventory(); // 테스트용
+        ApplyInventory(contentType); // 테스트용
     }
 
     public void OnOffPanel()
@@ -45,14 +50,41 @@ public class ShopUI : MonoBehaviour
         SoundManager.instance.PlayOneShotSoundFindByName("BubblePop");
     }
 
-    public void ApplyPlayerInventory()
+    public void ButtonSale()
     {
-        itemObjects = playerInventory.FindAllItem(ItemState.SELL);
-        Refresh();
+        ApplyInventory(ItemState.SELL);
+        OnOffPanel();
+    }
+    
+    public void ButtonPurchase()
+    {
+        ApplyInventory(ItemState.BUY);
+        OnOffPanel();
+    }
+    
+    public void ButtonInventory()
+    {
+        ApplyInventory(ItemState.NONE);
+        OnOffPanel();
     }
 
-    private void Refresh()
+    public void ApplyInventory(ItemState itemState)
     {
+        itemObjects = playerInventory.FindAllItem(itemState);
+        Refresh(itemState);
+    }
+    
+    private void Refresh(ItemState itemState)
+    {
+        Transform content = ChangeContent(itemState);
+
+        if (animator.GetBool("isUIOn"))
+        {
+            return;
+        }
+        
+        content.parent.parent.gameObject.SetActive(true);
+        
         for (int i = 0; i < itemObjects.Count; i++)
         {
             content.GetChild(i).gameObject.SetActive(true);
@@ -63,5 +95,29 @@ public class ShopUI : MonoBehaviour
         {
             content.GetChild(i).gameObject.SetActive(false);
         }
+    }
+
+    private Transform ChangeContent(ItemState itemState)
+    {
+        Transform content;
+        
+        saleContent.parent.parent.gameObject.SetActive(false);
+        purchaseContent.parent.parent.gameObject.SetActive(false);
+        inventoryContent.parent.parent.gameObject.SetActive(false);
+        
+        switch (itemState)
+        {
+            case ItemState.SELL:
+                content = saleContent;
+                break;
+            case ItemState.BUY:
+                content = purchaseContent;
+                break;
+            default: 
+                content = inventoryContent;
+                break;
+        }
+
+        return content;
     }
 }

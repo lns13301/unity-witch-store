@@ -35,6 +35,8 @@ public class Inventory : MonoBehaviour
         {
             itemObject.itemState = ItemState.SELL;
         }
+
+        itemObjects[0].itemState = ItemState.BUY;
     }
 
     // List
