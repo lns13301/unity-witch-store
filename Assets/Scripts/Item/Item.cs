@@ -12,7 +12,7 @@ public class Item
 
     public ItemValue itemValue;
     public ItemStat itemStat;
-
+    
     public Item(Item item)
     {
         this.code = item.code;
@@ -52,7 +52,7 @@ public class Item
                 return itemName.english;
         }
     }
-    
+
     public string Content(Language language)
     {
         switch (language)
