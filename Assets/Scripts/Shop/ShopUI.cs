@@ -44,28 +44,36 @@ public class ShopUI : MonoBehaviour
         ApplyInventory(contentType); // 테스트용
     }
 
-    public void OnOffPanel()
+    public void OnOffPanel(ItemState contentType)
     {
-        animator.SetBool("isUIOn", !animator.GetBool("isUIOn"));
         SoundManager.instance.PlayOneShotSoundFindByName("BubblePop");
+        
+        if (this.contentType != contentType && animator.GetBool("isUIOn"))
+        {
+            this.contentType = contentType;
+            return;
+        }
+
+        this.contentType = contentType;
+        animator.SetBool("isUIOn", !animator.GetBool("isUIOn"));
     }
 
     public void ButtonSale()
     {
         ApplyInventory(ItemState.SELL);
-        OnOffPanel();
+        OnOffPanel(ItemState.SELL);
     }
     
     public void ButtonPurchase()
     {
         ApplyInventory(ItemState.BUY);
-        OnOffPanel();
+        OnOffPanel(ItemState.BUY);
     }
     
     public void ButtonInventory()
     {
         ApplyInventory(ItemState.NONE);
-        OnOffPanel();
+        OnOffPanel(ItemState.NONE);
     }
 
     public void ApplyInventory(ItemState itemState)
@@ -77,11 +85,6 @@ public class ShopUI : MonoBehaviour
     private void Refresh(ItemState itemState)
     {
         Transform content = ChangeContent(itemState);
-
-        if (animator.GetBool("isUIOn"))
-        {
-            return;
-        }
         
         content.parent.parent.gameObject.SetActive(true);
         
