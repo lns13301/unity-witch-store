@@ -30,7 +30,7 @@ public class ItemDatabase : MonoBehaviour
     }
 
     // Search
-    private Item FindItemByCode(int code)
+    public Item FindItemByCode(int code)
     {
         return new Item(_itemFinder[code]);
     }

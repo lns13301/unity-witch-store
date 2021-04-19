@@ -752,10 +752,10 @@ RectTransform:
   m_Father: {fileID: 1869665867}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 600, y: -140}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &73216806
 MonoBehaviour:
@@ -1902,6 +1902,7 @@ GameObject:
   - component: {fileID: 149992975}
   - component: {fileID: 149992974}
   - component: {fileID: 149992973}
+  - component: {fileID: 149992977}
   m_Layer: 5
   m_Name: Slot (6)
   m_TagString: Untagged
@@ -1926,10 +1927,10 @@ RectTransform:
   m_Father: {fileID: 1526217144}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 600, y: -140}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &149992973
 MonoBehaviour:
@@ -2047,6 +2048,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149992971}
   m_CullTransparentMesh: 1
+--- !u!114 &149992977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149992971}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 547e9e9cc1fad42dcb6b939410e87ba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saleWeight: 0
+  saleSpeed: 0
+  playerItemObject:
+    item:
+      code: 0
+      itemName:
+        english: 
+        korean: 
+      spriteResource:
+        spritePath: 
+        sprite: {fileID: 0}
+      itemValue:
+        itemGrade: 0
+        purchasePrice: 0
+        salePrice: 0
+        value: 0
+      itemStat:
+        itemStatConsume:
+          recoveryHP: 0
+    count: 0
+    itemState: 0
+  defaultItem:
+    code: 0
+    itemName:
+      english: 
+      korean: 
+    spriteResource:
+      spritePath: 
+      sprite: {fileID: 0}
+    itemValue:
+      itemGrade: 0
+      purchasePrice: 0
+      salePrice: 0
+      value: 0
+    itemStat:
+      itemStatConsume:
+        recoveryHP: 0
 --- !u!1 &179393989 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8779998622477673557, guid: 496d78b99a97f6e459b22144a869e17a,
@@ -2380,10 +2430,10 @@ RectTransform:
   m_Father: {fileID: 1869665867}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 600, y: -360}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &203875866
 MonoBehaviour:
@@ -4417,6 +4467,7 @@ GameObject:
   - component: {fileID: 410493568}
   - component: {fileID: 410493567}
   - component: {fileID: 410493570}
+  - component: {fileID: 410493571}
   m_Layer: 5
   m_Name: Slot
   m_TagString: Untagged
@@ -4441,10 +4492,10 @@ RectTransform:
   m_Father: {fileID: 1526217144}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 140, y: -140}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &410493567
 MonoBehaviour:
@@ -4562,6 +4613,55 @@ MonoBehaviour:
           recoveryHP: 0
     count: 0
     itemState: 0
+--- !u!114 &410493571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410493565}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 547e9e9cc1fad42dcb6b939410e87ba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saleWeight: 0
+  saleSpeed: 0
+  playerItemObject:
+    item:
+      code: 0
+      itemName:
+        english: 
+        korean: 
+      spriteResource:
+        spritePath: 
+        sprite: {fileID: 0}
+      itemValue:
+        itemGrade: 0
+        purchasePrice: 0
+        salePrice: 0
+        value: 0
+      itemStat:
+        itemStatConsume:
+          recoveryHP: 0
+    count: 0
+    itemState: 0
+  defaultItem:
+    code: 0
+    itemName:
+      english: 
+      korean: 
+    spriteResource:
+      spritePath: 
+      sprite: {fileID: 0}
+    itemValue:
+      itemGrade: 0
+      purchasePrice: 0
+      salePrice: 0
+      value: 0
+    itemStat:
+      itemStatConsume:
+        recoveryHP: 0
 --- !u!1 &412192066
 GameObject:
   m_ObjectHideFlags: 0
@@ -4599,10 +4699,10 @@ RectTransform:
   m_Father: {fileID: 1300808951}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 140, y: -140}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &412192068
 MonoBehaviour:
@@ -5212,10 +5312,10 @@ RectTransform:
   m_Father: {fileID: 1300808951}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 600, y: -140}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &461567709
 MonoBehaviour:
@@ -5346,6 +5446,7 @@ GameObject:
   - component: {fileID: 461800278}
   - component: {fileID: 461800277}
   - component: {fileID: 461800276}
+  - component: {fileID: 461800280}
   m_Layer: 5
   m_Name: Slot (7)
   m_TagString: Untagged
@@ -5370,10 +5471,10 @@ RectTransform:
   m_Father: {fileID: 1526217144}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 600, y: -360}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &461800276
 MonoBehaviour:
@@ -5491,6 +5592,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461800274}
   m_CullTransparentMesh: 1
+--- !u!114 &461800280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461800274}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 547e9e9cc1fad42dcb6b939410e87ba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saleWeight: 0
+  saleSpeed: 0
+  playerItemObject:
+    item:
+      code: 0
+      itemName:
+        english: 
+        korean: 
+      spriteResource:
+        spritePath: 
+        sprite: {fileID: 0}
+      itemValue:
+        itemGrade: 0
+        purchasePrice: 0
+        salePrice: 0
+        value: 0
+      itemStat:
+        itemStatConsume:
+          recoveryHP: 0
+    count: 0
+    itemState: 0
+  defaultItem:
+    code: 0
+    itemName:
+      english: 
+      korean: 
+    spriteResource:
+      spritePath: 
+      sprite: {fileID: 0}
+    itemValue:
+      itemGrade: 0
+      purchasePrice: 0
+      salePrice: 0
+      value: 0
+    itemStat:
+      itemStatConsume:
+        recoveryHP: 0
 --- !u!1 &469560505
 GameObject:
   m_ObjectHideFlags: 0
@@ -5528,10 +5678,10 @@ RectTransform:
   m_Father: {fileID: 1300808951}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 370, y: -580}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &469560507
 MonoBehaviour:
@@ -5662,6 +5812,7 @@ GameObject:
   - component: {fileID: 479116021}
   - component: {fileID: 479116020}
   - component: {fileID: 479116019}
+  - component: {fileID: 479116023}
   m_Layer: 5
   m_Name: Slot (5)
   m_TagString: Untagged
@@ -5686,10 +5837,10 @@ RectTransform:
   m_Father: {fileID: 1526217144}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 370, y: -580}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &479116019
 MonoBehaviour:
@@ -5807,6 +5958,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 479116017}
   m_CullTransparentMesh: 1
+--- !u!114 &479116023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479116017}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 547e9e9cc1fad42dcb6b939410e87ba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saleWeight: 0
+  saleSpeed: 0
+  playerItemObject:
+    item:
+      code: 0
+      itemName:
+        english: 
+        korean: 
+      spriteResource:
+        spritePath: 
+        sprite: {fileID: 0}
+      itemValue:
+        itemGrade: 0
+        purchasePrice: 0
+        salePrice: 0
+        value: 0
+      itemStat:
+        itemStatConsume:
+          recoveryHP: 0
+    count: 0
+    itemState: 0
+  defaultItem:
+    code: 0
+    itemName:
+      english: 
+      korean: 
+    spriteResource:
+      spritePath: 
+      sprite: {fileID: 0}
+    itemValue:
+      itemGrade: 0
+      purchasePrice: 0
+      salePrice: 0
+      value: 0
+    itemStat:
+      itemStatConsume:
+        recoveryHP: 0
 --- !u!1 &494135705
 GameObject:
   m_ObjectHideFlags: 0
@@ -6140,10 +6340,10 @@ RectTransform:
   m_Father: {fileID: 1869665867}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 140, y: -360}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &509503562
 MonoBehaviour:
@@ -7489,6 +7689,7 @@ GameObject:
   - component: {fileID: 712946703}
   - component: {fileID: 712946702}
   - component: {fileID: 712946701}
+  - component: {fileID: 712946705}
   m_Layer: 5
   m_Name: Slot (4)
   m_TagString: Untagged
@@ -7513,10 +7714,10 @@ RectTransform:
   m_Father: {fileID: 1526217144}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 370, y: -360}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &712946701
 MonoBehaviour:
@@ -7634,6 +7835,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 712946699}
   m_CullTransparentMesh: 1
+--- !u!114 &712946705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712946699}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 547e9e9cc1fad42dcb6b939410e87ba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saleWeight: 0
+  saleSpeed: 0
+  playerItemObject:
+    item:
+      code: 0
+      itemName:
+        english: 
+        korean: 
+      spriteResource:
+        spritePath: 
+        sprite: {fileID: 0}
+      itemValue:
+        itemGrade: 0
+        purchasePrice: 0
+        salePrice: 0
+        value: 0
+      itemStat:
+        itemStatConsume:
+          recoveryHP: 0
+    count: 0
+    itemState: 0
+  defaultItem:
+    code: 0
+    itemName:
+      english: 
+      korean: 
+    spriteResource:
+      spritePath: 
+      sprite: {fileID: 0}
+    itemValue:
+      itemGrade: 0
+      purchasePrice: 0
+      salePrice: 0
+      value: 0
+    itemStat:
+      itemStatConsume:
+        recoveryHP: 0
 --- !u!1 &713128975
 GameObject:
   m_ObjectHideFlags: 0
@@ -7889,10 +8139,10 @@ RectTransform:
   m_Father: {fileID: 1869665867}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 140, y: -580}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &731741782
 MonoBehaviour:
@@ -8588,10 +8838,10 @@ RectTransform:
   m_Father: {fileID: 1300808951}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 140, y: -580}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &763883513
 MonoBehaviour:
@@ -10133,6 +10383,7 @@ GameObject:
   - component: {fileID: 982939173}
   - component: {fileID: 982939172}
   - component: {fileID: 982939171}
+  - component: {fileID: 982939175}
   m_Layer: 5
   m_Name: Slot (3)
   m_TagString: Untagged
@@ -10157,10 +10408,10 @@ RectTransform:
   m_Father: {fileID: 1526217144}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 370, y: -140}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &982939171
 MonoBehaviour:
@@ -10278,6 +10529,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 982939169}
   m_CullTransparentMesh: 1
+--- !u!114 &982939175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982939169}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 547e9e9cc1fad42dcb6b939410e87ba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saleWeight: 0
+  saleSpeed: 0
+  playerItemObject:
+    item:
+      code: 0
+      itemName:
+        english: 
+        korean: 
+      spriteResource:
+        spritePath: 
+        sprite: {fileID: 0}
+      itemValue:
+        itemGrade: 0
+        purchasePrice: 0
+        salePrice: 0
+        value: 0
+      itemStat:
+        itemStatConsume:
+          recoveryHP: 0
+    count: 0
+    itemState: 0
+  defaultItem:
+    code: 0
+    itemName:
+      english: 
+      korean: 
+    spriteResource:
+      spritePath: 
+      sprite: {fileID: 0}
+    itemValue:
+      itemGrade: 0
+      purchasePrice: 0
+      salePrice: 0
+      value: 0
+    itemStat:
+      itemStatConsume:
+        recoveryHP: 0
 --- !u!1 &993633758
 GameObject:
   m_ObjectHideFlags: 0
@@ -11507,10 +11807,10 @@ RectTransform:
   m_Father: {fileID: 1300808951}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 600, y: -360}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1099969732
 MonoBehaviour:
@@ -13379,10 +13679,10 @@ RectTransform:
   m_Father: {fileID: 1869665867}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 370, y: -140}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1241484323
 MonoBehaviour:
@@ -14071,10 +14371,10 @@ RectTransform:
   m_Father: {fileID: 1869665867}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 370, y: -360}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1317713063
 MonoBehaviour:
@@ -15458,10 +15758,10 @@ RectTransform:
   m_Father: {fileID: 1300808951}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 370, y: -360}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1468410057
 MonoBehaviour:
@@ -15667,6 +15967,7 @@ GameObject:
   - component: {fileID: 1480697948}
   - component: {fileID: 1480697947}
   - component: {fileID: 1480697946}
+  - component: {fileID: 1480697950}
   m_Layer: 5
   m_Name: Slot (2)
   m_TagString: Untagged
@@ -15691,10 +15992,10 @@ RectTransform:
   m_Father: {fileID: 1526217144}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 140, y: -580}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1480697946
 MonoBehaviour:
@@ -15812,6 +16113,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1480697944}
   m_CullTransparentMesh: 1
+--- !u!114 &1480697950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480697944}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 547e9e9cc1fad42dcb6b939410e87ba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saleWeight: 0
+  saleSpeed: 0
+  playerItemObject:
+    item:
+      code: 0
+      itemName:
+        english: 
+        korean: 
+      spriteResource:
+        spritePath: 
+        sprite: {fileID: 0}
+      itemValue:
+        itemGrade: 0
+        purchasePrice: 0
+        salePrice: 0
+        value: 0
+      itemStat:
+        itemStatConsume:
+          recoveryHP: 0
+    count: 0
+    itemState: 0
+  defaultItem:
+    code: 0
+    itemName:
+      english: 
+      korean: 
+    spriteResource:
+      spritePath: 
+      sprite: {fileID: 0}
+    itemValue:
+      itemGrade: 0
+      purchasePrice: 0
+      salePrice: 0
+      value: 0
+    itemStat:
+      itemStatConsume:
+        recoveryHP: 0
 --- !u!1 &1483933126
 GameObject:
   m_ObjectHideFlags: 0
@@ -16019,6 +16369,7 @@ GameObject:
   - component: {fileID: 1500980080}
   - component: {fileID: 1500980079}
   - component: {fileID: 1500980078}
+  - component: {fileID: 1500980082}
   m_Layer: 5
   m_Name: Slot (1)
   m_TagString: Untagged
@@ -16043,10 +16394,10 @@ RectTransform:
   m_Father: {fileID: 1526217144}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 140, y: -360}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1500980078
 MonoBehaviour:
@@ -16164,6 +16515,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500980076}
   m_CullTransparentMesh: 1
+--- !u!114 &1500980082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500980076}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 547e9e9cc1fad42dcb6b939410e87ba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saleWeight: 0
+  saleSpeed: 0
+  playerItemObject:
+    item:
+      code: 0
+      itemName:
+        english: 
+        korean: 
+      spriteResource:
+        spritePath: 
+        sprite: {fileID: 0}
+      itemValue:
+        itemGrade: 0
+        purchasePrice: 0
+        salePrice: 0
+        value: 0
+      itemStat:
+        itemStatConsume:
+          recoveryHP: 0
+    count: 0
+    itemState: 0
+  defaultItem:
+    code: 0
+    itemName:
+      english: 
+      korean: 
+    spriteResource:
+      spritePath: 
+      sprite: {fileID: 0}
+    itemValue:
+      itemGrade: 0
+      purchasePrice: 0
+      salePrice: 0
+      value: 0
+    itemStat:
+      itemStatConsume:
+        recoveryHP: 0
 --- !u!1 &1506371545
 GameObject:
   m_ObjectHideFlags: 0
@@ -20059,10 +20459,10 @@ RectTransform:
   m_Father: {fileID: 1300808951}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 140, y: -360}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1795720916
 MonoBehaviour:
@@ -21155,10 +21555,10 @@ RectTransform:
   m_Father: {fileID: 1869665867}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 140, y: -140}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1892099886
 MonoBehaviour:
@@ -21424,10 +21824,10 @@ RectTransform:
   m_Father: {fileID: 1869665867}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 370, y: -580}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1917100996
 MonoBehaviour:
@@ -23093,10 +23493,10 @@ RectTransform:
   m_Father: {fileID: 1300808951}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 370, y: -140}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2037412105
 MonoBehaviour:
