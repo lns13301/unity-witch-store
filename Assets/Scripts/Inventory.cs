@@ -106,6 +106,7 @@ public class Inventory : MonoBehaviour
     {
         Dictionary<int, int> refresh = new Dictionary<int, int>();
 
+        
         for (int i = 0; i < itemObjects.Count; i++)
         {
             refresh.Add(itemObjects[i].item.code, i);

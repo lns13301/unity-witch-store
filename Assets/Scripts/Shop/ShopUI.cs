@@ -81,6 +81,11 @@ public class ShopUI : MonoBehaviour
         itemObjects = playerInventory.FindAllItem(itemState);
         Refresh(itemState);
     }
+
+    public void Refresh()
+    {
+        Refresh(contentType);
+    }
     
     private void Refresh(ItemState itemState)
     {
@@ -92,6 +97,10 @@ public class ShopUI : MonoBehaviour
         {
             content.GetChild(i).gameObject.SetActive(true);
             content.GetChild(i).GetComponent<ShopSlot>().SetItemObject(itemObjects[i]);
+            if (itemState == ItemState.SELL)
+            {
+                content.GetChild(i).GetComponent<SaleCalculator>().Initialize(itemObjects[i]);
+            }
         }
 
         for (int i = itemObjects.Count; i < content.childCount; i++)

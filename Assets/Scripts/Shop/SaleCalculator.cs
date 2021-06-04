@@ -15,7 +15,7 @@ public class SaleCalculator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Initialize();
+
     }
 
     // Update is called once per frame
@@ -24,9 +24,9 @@ public class SaleCalculator : MonoBehaviour
         
     }
 
-    private void Initialize()
+    public void Initialize(ItemObject itemObject)
     {
-        playerItemObject = GetComponent<ItemObject>();
+        playerItemObject = itemObject;
         StartCoroutine(nameof(Sale));
     }
 
@@ -44,7 +44,9 @@ public class SaleCalculator : MonoBehaviour
     private void Sell()
     {
         playerItemObject.Remove(1);
+        SoundManager.instance.PlayOneShotSoundFindByName("SellItem");
         // 플레이어 돈 변화
+        ShopUI.instance.Refresh();
     }
 
     public void InitializeSale()
