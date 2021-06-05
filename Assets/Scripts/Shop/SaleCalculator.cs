@@ -44,7 +44,7 @@ public class SaleCalculator : MonoBehaviour
     private void Sell()
     {
         playerItemObject.Remove(1);
-        SoundManager.instance.PlayOneShotSoundFindByName("SellItem");
+        SoundManager.instance.PlayEffectFindByName("SellItem");
         // 플레이어 돈 변화
         ShopUI.instance.Refresh();
     }

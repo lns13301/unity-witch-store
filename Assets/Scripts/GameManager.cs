@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public Language language;
+    public PlayerPosition playerPosition;
     
     // Start is called before the first frame update
     void Start()
@@ -25,5 +26,11 @@ public class GameManager : MonoBehaviour
     private void initialize()
     {
         language = Language.KOREAN;
+        InitializePosition(new ShopImpl());
+    }
+
+    public void InitializePosition(PositionStrategy positionStrategy)
+    {
+        playerPosition = positionStrategy.Initialize();
     }
 }

@@ -59,7 +59,7 @@ public class ShopItemUI : MonoBehaviour
 
     public void OnPanel(ShopSlot shopSlot, ItemObject itemObject)
     {
-        SoundManager.instance.PlayOneShotSoundFindByName("Paper");
+        SoundManager.instance.PlayOneShotEffectFindByName("Paper");
         shopSlotInShop = shopSlot;
         this.itemObject = itemObject;
         Language language = GameManager.instance.language;
@@ -80,8 +80,8 @@ public class ShopItemUI : MonoBehaviour
 
     public void OffPanel()
     {
-        SoundManager.instance.PlayOneShotSoundFindByName("ButtonClose");
-        SoundManager.instance.PlayOneShotSoundFindByName("Paper");
+        SoundManager.instance.PlayOneShotEffectFindByName("ButtonClose");
+        SoundManager.instance.PlayOneShotEffectFindByName("Paper");
         shopSlotInShop.Refresh();
         Invoke("Off", 0.5f);
         animator.SetBool("isUIOn", false);

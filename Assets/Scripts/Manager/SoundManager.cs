@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
-    [SerializeField] private Sound[] sounds;
-    [SerializeField] private Sound[] effectSounds;
+    [SerializeField] private Sound[] musics;
+    [SerializeField] private Sound[] effects;
+    [SerializeField] private List<Sound> playingMusics;
+    [SerializeField] private List<Sound> playingEffects;
 
     public Dictionary<string, Sound> soundMap;
 
@@ -18,62 +21,84 @@ public class SoundManager : MonoBehaviour
     {
         instance = this;
 
-        sounds = new Sound[transform.GetChild(0).childCount];
-        effectSounds = new Sound[transform.GetChild(1).childCount];
+        musics = new Sound[transform.GetChild(0).childCount];
+        effects = new Sound[transform.GetChild(1).childCount];
         soundMap = new Dictionary<string, Sound>();
 
         // 음악 등록
         for (int i = 0; i < transform.GetChild(0).childCount; i++)
         {
-            sounds[i] = transform.GetChild(0).GetChild(i).GetComponent<Sound>();
+            musics[i] = transform.GetChild(0).GetChild(i).GetComponent<Sound>();
             try
             {
-                soundMap.Add(sounds[i].soundName, sounds[i]);
+                soundMap.Add(musics[i].soundName, musics[i]);
             }
             catch
             {
-                soundMap.Add(sounds[i].gameObject.name, sounds[i]);
+                soundMap.Add(musics[i].gameObject.name, musics[i]);
             }
         }
 
         // 효과음 등록
         for (int i = 0; i < transform.GetChild(1).childCount; i++)
         {
-            effectSounds[i] = transform.GetChild(1).GetChild(i).GetComponent<Sound>();
+            effects[i] = transform.GetChild(1).GetChild(i).GetComponent<Sound>();
             try
             {
-                soundMap.Add(effectSounds[i].soundName, effectSounds[i]);
+                soundMap.Add(effects[i].soundName, effects[i]);
             }
             catch
             {
-                soundMap.Add(effectSounds[i].gameObject.name, effectSounds[i]);
+                soundMap.Add(effects[i].gameObject.name, effects[i]);
             }
         }
     }
 
     public void PlayMusic(int index)
     {
-        sounds[index].PlaySound();
+        Sound sound = musics[index];
+        sound.PlaySound();
+        playingMusics.Add(sound);
     }
 
     public void PlayEffectSound(int index)
     {
-        effectSounds[index].PlaySound();
+        Sound sound = effects[index];
+        sound.PlaySound();
+        playingEffects.Add(sound);
     }
 
     public void PlayOneShotEffectSound(int index)
     {
-        effectSounds[index].StopSound();
-        effectSounds[index].PlaySound();
+        Sound sound = effects[index];
+        sound.StopSound();
+        sound.PlaySound();
+        playingEffects.Add(sound);
+    }
+    
+    public void PlayEffectFindByName(string name)
+    {
+        try
+        {
+            Sound sound = soundMap[name];
+            sound.PlaySound();
+            playingEffects.Add(sound);
+        }
+        catch (NullReferenceException)
+        {
+            Debug.LogError("찾을 수 없음: " + name);
+        }
     }
 
     public void PlayMusicFindByName(string name)
     {
         try
         {
-            soundMap[name].StopSound();
-            soundMap[name].PlaySound();
-            soundMap[name].GetComponent<AudioSource>().loop = true;
+            Sound sound = soundMap[name];
+            sound.StopSound();
+            sound.PlaySound();
+            sound.GetComponent<AudioSource>().loop = true;
+            playingMusics.Add(sound);
         }
         catch (NullReferenceException)
         {
@@ -81,12 +106,29 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlayOneShotSoundFindByName(string name)
+    public void PlayOneShotEffectFindByName(string name)
     {
         try
         {
-            soundMap[name].StopSound();
-            soundMap[name].PlaySound();
+            Sound sound = soundMap[name];
+            sound.StopSound();
+            sound.PlaySound();
+            playingEffects.Add(sound);
+        }
+        catch (NullReferenceException)
+        {
+            Debug.LogError("찾을 수 없음: " + name);
+        }
+    }
+    
+    public void PlayOneShotMusicFindByName(string name)
+    {
+        try
+        {
+            Sound sound = soundMap[name];
+            sound.StopSound();
+            sound.PlaySound();
+            playingMusics.Add(sound);
         }
         catch (NullReferenceException)
         {
@@ -94,14 +136,18 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void StopSound(int index)
+    public void StopMusic(int index)
     {
-        sounds[index].StopSound();
+        Sound sound = musics[index]; 
+        sound.StopSound();
+        playingMusics.Remove(sound);
     }
 
     public void StopEffectSound(int index)
     {
-        effectSounds[index].StopSound();
+        Sound sound = effects[index]; 
+        sound.StopSound();
+        playingEffects.Remove(sound);
     }
 
     public void RefreshSounds()
@@ -110,11 +156,28 @@ public class SoundManager : MonoBehaviour
         StopAllSounds();
     }
 
+    public void DistinctSounds()
+    {
+        playingMusics = new List<Sound>(new HashSet<Sound>(playingMusics));
+        playingMusics = new List<Sound>(new HashSet<Sound>(playingEffects));
+    }
+
     public void StopAllSounds()
     {
-        for (int i = 0; i < sounds.Length; i++)
+        DistinctSounds();
+        
+        for (int i = 0; i < playingMusics.Count; i++)
         {
-            sounds[i].StopSound();
+            Sound sound = playingMusics[i];
+            sound.StopSound();
+            playingMusics.Remove(sound);
+        }
+        
+        for (int i = 0; i < playingEffects.Count; i++)
+        {
+            Sound sound = playingEffects.First();
+            sound.StopSound();
+            playingEffects.Remove(sound);
         }
     }
 

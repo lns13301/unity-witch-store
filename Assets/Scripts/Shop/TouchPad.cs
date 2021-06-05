@@ -119,7 +119,7 @@ public class TouchPad : MonoBehaviour
             return;
         }
         touchPanelNumberString += value;
-        SoundManager.instance.PlayOneShotSoundFindByName("Calculator");
+        SoundManager.instance.PlayOneShotEffectFindByName("Calculator");
     }
 
     public void RemoveLastNumberText()
@@ -128,7 +128,7 @@ public class TouchPad : MonoBehaviour
         {
             touchPanelNumberString = "" + (long.Parse(touchPanelNumberString) / 10);
             ShowPanelNumber();
-            SoundManager.instance.PlayOneShotSoundFindByName("Calculator");
+            SoundManager.instance.PlayOneShotEffectFindByName("Calculator");
         }
     }
 
@@ -138,7 +138,7 @@ public class TouchPad : MonoBehaviour
         {
             touchPanelNumberString = "0";
             ShowPanelNumber();
-            SoundManager.instance.PlayOneShotSoundFindByName("Calculator");
+            SoundManager.instance.PlayOneShotEffectFindByName("Calculator");
         }
     }
 

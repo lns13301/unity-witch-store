@@ -37,16 +37,13 @@ public class ShopUI : MonoBehaviour
         panel = gameObject;
         animator = GetComponent<Animator>();
 
-        SoundManager.instance.PlayMusicFindByName("Bird");
-        SoundManager.instance.PlayMusicFindByName("Shop");
-
         playerInventory = GameObject.Find("Manager").transform.Find("PlayerInventoryManager").GetComponent<Inventory>();
         ApplyInventory(contentType); // 테스트용
     }
 
     public void OnOffPanel(ItemState contentType)
     {
-        SoundManager.instance.PlayOneShotSoundFindByName("BubblePop");
+        SoundManager.instance.PlayOneShotEffectFindByName("BubblePop");
         
         if (this.contentType != contentType && animator.GetBool("isUIOn"))
         {

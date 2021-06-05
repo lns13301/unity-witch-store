@@ -48,7 +48,7 @@ public class ShopSalePriceUI : MonoBehaviour
     public void OffSalePriceUI()
     {
         shopItemUI.OnPanel(itemObject);
-        SoundManager.instance.PlayOneShotSoundFindByName("ButtonClose");
+        SoundManager.instance.PlayOneShotEffectFindByName("ButtonClose");
         animator.SetBool("isUIOn", false);
         Invoke("Off", 0.5f);
         closePanel.SetActive(false);
