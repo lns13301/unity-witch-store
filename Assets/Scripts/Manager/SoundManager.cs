@@ -59,6 +59,7 @@ public class SoundManager : MonoBehaviour
         Sound sound = musics[index];
         sound.PlaySound();
         playingMusics.Add(sound);
+        DistinctSounds();
     }
 
     public void PlayEffectSound(int index)
@@ -66,6 +67,7 @@ public class SoundManager : MonoBehaviour
         Sound sound = effects[index];
         sound.PlaySound();
         playingEffects.Add(sound);
+        DistinctSounds();
     }
 
     public void PlayOneShotEffectSound(int index)
@@ -74,6 +76,7 @@ public class SoundManager : MonoBehaviour
         sound.StopSound();
         sound.PlaySound();
         playingEffects.Add(sound);
+        DistinctSounds();
     }
     
     public void PlayEffectFindByName(string name)
@@ -83,6 +86,7 @@ public class SoundManager : MonoBehaviour
             Sound sound = soundMap[name];
             sound.PlaySound();
             playingEffects.Add(sound);
+            DistinctSounds();
         }
         catch (NullReferenceException)
         {
@@ -99,6 +103,7 @@ public class SoundManager : MonoBehaviour
             sound.PlaySound();
             sound.GetComponent<AudioSource>().loop = true;
             playingMusics.Add(sound);
+            DistinctSounds();
         }
         catch (NullReferenceException)
         {
@@ -106,21 +111,6 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlayOneShotEffectFindByName(string name)
-    {
-        try
-        {
-            Sound sound = soundMap[name];
-            sound.StopSound();
-            sound.PlaySound();
-            playingEffects.Add(sound);
-        }
-        catch (NullReferenceException)
-        {
-            Debug.LogError("찾을 수 없음: " + name);
-        }
-    }
-    
     public void PlayOneShotMusicFindByName(string name)
     {
         try
@@ -129,6 +119,23 @@ public class SoundManager : MonoBehaviour
             sound.StopSound();
             sound.PlaySound();
             playingMusics.Add(sound);
+            DistinctSounds();
+        }
+        catch (NullReferenceException)
+        {
+            Debug.LogError("찾을 수 없음: " + name);
+        }
+    }
+    
+    public void PlayOneShotEffectFindByName(string name)
+    {
+        try
+        {
+            Sound sound = soundMap[name];
+            sound.StopSound();
+            sound.PlaySound();
+            playingEffects.Add(sound);
+            DistinctSounds();
         }
         catch (NullReferenceException)
         {
@@ -159,23 +166,21 @@ public class SoundManager : MonoBehaviour
     public void DistinctSounds()
     {
         playingMusics = new List<Sound>(new HashSet<Sound>(playingMusics));
-        playingMusics = new List<Sound>(new HashSet<Sound>(playingEffects));
+        playingEffects = new List<Sound>(new HashSet<Sound>(playingEffects));
     }
 
     public void StopAllSounds()
     {
-        DistinctSounds();
-        
-        for (int i = 0; i < playingMusics.Count; i++)
+        for (var i = playingMusics.Count - 1; i > -1; i--)
         {
             Sound sound = playingMusics[i];
             sound.StopSound();
             playingMusics.Remove(sound);
         }
         
-        for (int i = 0; i < playingEffects.Count; i++)
+        for (var i = playingMusics.Count - 1; i > -1; i--)
         {
-            Sound sound = playingEffects.First();
+            Sound sound = playingEffects[i];
             sound.StopSound();
             playingEffects.Remove(sound);
         }

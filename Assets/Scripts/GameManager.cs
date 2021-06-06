@@ -26,11 +26,6 @@ public class GameManager : MonoBehaviour
     private void initialize()
     {
         language = Language.KOREAN;
-        InitializePosition(new ShopImpl());
-    }
-
-    public void InitializePosition(PositionStrategy positionStrategy)
-    {
-        playerPosition = positionStrategy.Initialize();
+        PositionManager.instance.InitializePosition(new ShopImpl());
     }
 }

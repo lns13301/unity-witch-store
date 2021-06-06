@@ -7,4 +7,8 @@ public interface PositionStrategy
     PlayerPosition Initialize();
 
     void SoundInitialize();
+
+    void CanvasInitialize();
+
+    void CanvasDestroy();
 }

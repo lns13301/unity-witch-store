@@ -2,8 +2,8 @@
 public enum PlayerPosition
 {
     MAIN,
+    VILLAGE,
     SHOP,
     CRAFT,
-    VILLAGE,
     QUEST
 }
