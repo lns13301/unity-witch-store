@@ -20,16 +20,31 @@ public class PositionManager : MonoBehaviour
     {
         
     }
+    
+    public void InitializePosition(PlayerPosition playerPosition)
+    {
+        InitializePosition(PositionStrategy(playerPosition));
+    }
 
     public void InitializePosition(PositionStrategy positionStrategy)
     {
         _registeredPositionStrategy?.CanvasDestroy();
-        GameManager.instance.playerPosition = positionStrategy.Initialize();
+        GameManager.instance.PlayerData.playerPosition = positionStrategy.Initialize();
         RegisterPosition(positionStrategy);
     }
 
     private void RegisterPosition(PositionStrategy positionStrategy)
     {
         _registeredPositionStrategy = positionStrategy;
+    }
+
+    private static PositionStrategy PositionStrategy(PlayerPosition playerPosition)
+    {
+        return playerPosition switch
+        {
+            PlayerPosition.SHOP => new ShopImpl(),
+            PlayerPosition.CRAFT => new CraftImpl(),
+            _ => new ShopImpl()
+        };
     }
 }

@@ -62,7 +62,7 @@ public class ShopItemUI : MonoBehaviour
         SoundManager.instance.PlayOneShotEffectFindByName("Paper");
         shopSlotInShop = shopSlot;
         this.itemObject = itemObject;
-        Language language = GameManager.instance.language;
+        Language language = GameManager.instance.PlayerData.language;
         this.shopSlot.SetItemObject(itemObject);
         price.text = "판매가 :  " + 
                      UtilManager.instance.numberFormatter.ChangeNumberFormat(itemObject.item.itemValue.salePrice) + 
