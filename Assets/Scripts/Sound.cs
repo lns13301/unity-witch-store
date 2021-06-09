@@ -5,33 +5,39 @@ using UnityEngine;
 public class Sound : MonoBehaviour
 {
     public string soundName;
-    public bool isPlay;
+    public bool isPause;
     private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        isPlay = false;
+        isPause = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isPlay)
-        {
-            audioSource.Play();
-            isPlay = false;
-        }
+        
     }
 
-    public void PlaySound()
+    private void Play()
     {
+        audioSource.Play();
+    }
+
+    public void PlaySound(bool absoluteStart = false)
+    {
+        if (!absoluteStart && isPause)
+        {
+            UnPauseSound();
+        }
+
         if (audioSource.isPlaying)
         {
             return;
         }
 
-        isPlay = true;
+        Play();
     }
 
     public void StopSound()
@@ -41,6 +47,25 @@ public class Sound : MonoBehaviour
             audioSource.Stop();
         }
 
-        isPlay = false;
+        isPause = false;
+    }
+    
+    public void PauseSound()
+    {
+        if (audioSource.isPlaying)
+        {
+            audioSource.Pause();
+        }
+
+        isPause = true;
+    }
+    
+    public void UnPauseSound()
+    {
+        if (isPause)
+        {
+            audioSource.UnPause();
+            isPause = false;
+        }
     }
 }

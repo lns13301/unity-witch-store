@@ -11,7 +11,7 @@ public class CraftImpl : PositionStrategy
     
     public void SoundInitialize()
     {
-        SoundManager.instance.StopAllSounds();
+        SoundManager.instance.StopAllSounds(true);
         SoundManager.instance.PlayMusicFindByName("Craft");
     }
 

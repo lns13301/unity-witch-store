@@ -38,5 +38,6 @@ public class GameManager : MonoBehaviour
             .build();
         playerData.language = playerData.language;
         PositionManager.instance.InitializePosition(playerData.playerPosition);
+        UIManager.instance.UpdateMoney(playerData.money);
     }
 }

@@ -95,4 +95,9 @@ public class PlayerData
         this.money = builder.money;
         this.cash = builder.cash;
     }
+
+    public void AddMoney(long itemValueSalePrice)
+    {
+        this.money += itemValueSalePrice;
+    }
 }

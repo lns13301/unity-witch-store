@@ -45,8 +45,16 @@ public class SaleCalculator : MonoBehaviour
     {
         playerItemObject.Remove(1);
         SoundManager.instance.PlayEffectFindByName("SellItem");
-        // 플레이어 돈 변화
+        ChangePlayerMoney();
         ShopUI.instance.Refresh();
+    }
+
+    private void ChangePlayerMoney()
+    {
+        PlayerData playerData = GameManager.instance.PlayerData;
+        
+        playerData.AddMoney(defaultItem.itemValue.salePrice);
+        UIManager.instance.UpdateMoney(playerData.money);
     }
 
     public void InitializeSale()

@@ -54,10 +54,11 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlayMusic(int index)
+    public void PlayMusic(int index, bool absoluteStart = false)
     {
         Sound sound = musics[index];
-        sound.PlaySound();
+        
+        sound.PlaySound(absoluteStart);
         playingMusics.Add(sound);
         DistinctSounds();
     }
@@ -94,13 +95,18 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlayMusicFindByName(string name)
+    public void PlayMusicFindByName(string name, bool absoluteStart = false)
     {
         try
         {
             Sound sound = soundMap[name];
-            sound.StopSound();
-            sound.PlaySound();
+            
+            if (absoluteStart)
+            {
+                sound.StopSound();
+            }
+            
+            sound.PlaySound(absoluteStart);
             sound.GetComponent<AudioSource>().loop = true;
             playingMusics.Add(sound);
             DistinctSounds();
@@ -149,6 +155,12 @@ public class SoundManager : MonoBehaviour
         sound.StopSound();
         playingMusics.Remove(sound);
     }
+    
+    public void PauseMusic(int index)
+    {
+        Sound sound = musics[index]; 
+        sound.PauseSound();
+    }
 
     public void StopEffectSound(int index)
     {
@@ -169,7 +181,26 @@ public class SoundManager : MonoBehaviour
         playingEffects = new List<Sound>(new HashSet<Sound>(playingEffects));
     }
 
-    public void StopAllSounds()
+    public void StopAllSounds(bool absoluteStop = false)
+    {
+        if (absoluteStop)
+        {
+            StopAllMusics();
+        }
+        else
+        {
+            PauseAllMusics();
+        }
+        
+        for (var i = playingEffects.Count - 1; i > -1; i--)
+        {
+            Sound sound = playingEffects[i];
+            sound.StopSound();
+            playingEffects.Remove(sound);
+        }
+    }
+
+    public void StopAllMusics()
     {
         for (var i = playingMusics.Count - 1; i > -1; i--)
         {
@@ -177,12 +208,14 @@ public class SoundManager : MonoBehaviour
             sound.StopSound();
             playingMusics.Remove(sound);
         }
-        
+    }
+    
+    public void PauseAllMusics()
+    {
         for (var i = playingMusics.Count - 1; i > -1; i--)
         {
-            Sound sound = playingEffects[i];
-            sound.StopSound();
-            playingEffects.Remove(sound);
+            Sound sound = playingMusics[i];
+            sound.PauseSound();
         }
     }
 
