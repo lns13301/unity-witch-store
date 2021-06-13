@@ -9,8 +9,8 @@ public class CraftUI : MonoBehaviour, IPointerUpHandler
     
     public static CraftUI instance;
 
-    public Transform saleContent;
-    public Transform purchaseContent;
+    public Transform craftContent;
+    public Transform recipeContent;
     public Transform inventoryContent;
     public ItemState contentType;
 
@@ -39,7 +39,8 @@ public class CraftUI : MonoBehaviour, IPointerUpHandler
         animator = GetComponent<Animator>();
 
         playerInventory = GameObject.Find("Manager").transform.Find("PlayerInventoryManager").GetComponent<Inventory>();
-        ApplyInventory(contentType); // 테스트용
+        //ApplyInventory(contentType); // 테스트용
+        gameObject.SetActive(false);
     }
 
     public void OnOffPanel(ItemState contentType)
@@ -58,14 +59,14 @@ public class CraftUI : MonoBehaviour, IPointerUpHandler
 
     public void ButtonCraft()
     {
-        ApplyInventory(ItemState.SELL);
-        OnOffPanel(ItemState.SELL);
+        ApplyInventory(ItemState.NONE);
+        OnOffPanel(ItemState.CRAFT);
     }
     
     public void ButtonRecipe()
     {
-        ApplyInventory(ItemState.BUY);
-        OnOffPanel(ItemState.BUY);
+        ApplyInventory(ItemState.NONE);
+        OnOffPanel(ItemState.RECIPE);
     }
     
     public void ButtonInventory()
@@ -95,10 +96,6 @@ public class CraftUI : MonoBehaviour, IPointerUpHandler
         {
             content.GetChild(i).gameObject.SetActive(true);
             content.GetChild(i).GetComponent<ShopSlot>().SetItemObject(itemObjects[i]);
-            if (itemState == ItemState.SELL)
-            {
-                content.GetChild(i).GetComponent<SaleCalculator>().Initialize(itemObjects[i]);
-            }
         }
 
         for (int i = itemObjects.Count; i < content.childCount; i++)
@@ -111,17 +108,17 @@ public class CraftUI : MonoBehaviour, IPointerUpHandler
     {
         Transform content;
         
-        saleContent.parent.parent.gameObject.SetActive(false);
-        purchaseContent.parent.parent.gameObject.SetActive(false);
+        craftContent.parent.parent.gameObject.SetActive(false);
+        recipeContent.parent.parent.gameObject.SetActive(false);
         inventoryContent.parent.parent.gameObject.SetActive(false);
         
         switch (itemState)
         {
-            case ItemState.SELL:
-                content = saleContent;
+            case ItemState.CRAFT:
+                content = craftContent;
                 break;
-            case ItemState.BUY:
-                content = purchaseContent;
+            case ItemState.RECIPE:
+                content = recipeContent;
                 break;
             default: 
                 content = inventoryContent;

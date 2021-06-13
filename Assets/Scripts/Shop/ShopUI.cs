@@ -38,7 +38,7 @@ public class ShopUI : MonoBehaviour
         animator = GetComponent<Animator>();
 
         playerInventory = GameObject.Find("Manager").transform.Find("PlayerInventoryManager").GetComponent<Inventory>();
-        ApplyInventory(contentType); // 테스트용
+        //ApplyInventory(contentType); // 테스트용
     }
 
     public void OnOffPanel(ItemState contentType)

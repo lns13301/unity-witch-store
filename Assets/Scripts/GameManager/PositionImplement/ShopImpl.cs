@@ -22,15 +22,16 @@ public class ShopImpl : PositionStrategy
     public void CanvasInitialize()
     {
         GameObject.Find("Background").transform.Find("Shop").gameObject.SetActive(true);
-        Vector3 position = GameObject.Find("Canvas").transform.Find("PlayerShopUI").GetComponent<RectTransform>().position;
-        GameObject.Find("Canvas").transform.Find("PlayerShopUI").GetComponent<RectTransform>().position = new Vector3(position.x, UI_OUT_OF_RANGE);
+        
+        //Vector3 position = GameObject.Find("Canvas").transform.Find("PlayerShopUI").GetComponent<RectTransform>().position;
+        //GameObject.Find("Canvas").transform.Find("PlayerShopUI").GetComponent<RectTransform>().localPosition = new Vector2(position.x, UI_DEFAULT_RANGE);
     }
 
     public void CanvasDestroy()
     {
         GameObject.Find("Background").transform.Find("Shop").gameObject.SetActive(false);
         
-        Vector3 position = GameObject.Find("Canvas").transform.Find("PlayerShopUI").GetComponent<RectTransform>().position;
-        GameObject.Find("Canvas").transform.Find("PlayerShopUI").GetComponent<RectTransform>().position = new Vector3(position.x, UI_DEFAULT_RANGE);
+        //Vector3 position = GameObject.Find("Canvas").transform.Find("PlayerShopUI").GetComponent<RectTransform>().position;
+        //GameObject.Find("Canvas").transform.Find("PlayerShopUI").GetComponent<RectTransform>().localPosition = new Vector2(position.x, UI_OUT_OF_RANGE);
     }
 }

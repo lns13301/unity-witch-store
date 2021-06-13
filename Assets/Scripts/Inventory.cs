@@ -22,13 +22,15 @@ public class Inventory : MonoBehaviour
 
     private void InitializeItemTest()
     {
-        // 임시 아이템 생성 및 로드 테스트
+        // 임시 아이템 생성 및 로드 테스트, 후에 playerData 를 통해서 주입 받도록 변경, CountOutOfRange 예외 처리 해결
         Dictionary<int, int> testItemTable = new Dictionary<int, int>();
-        testItemTable.Add(100001, 50);
-        testItemTable.Add(100002, 30);
-        testItemTable.Add(100003, 65);
-        testItemTable.Add(100004, 104);
-        testItemTable.Add(200001, 12);
+        testItemTable.Add(100001, 150);
+        testItemTable.Add(100002, 330);
+        testItemTable.Add(100003, 565);
+        testItemTable.Add(100004, 2104);
+        testItemTable.Add(100005, 333);
+        testItemTable.Add(100006, 222);
+        testItemTable.Add(200001, 412);
 
         itemObjects = ItemDatabase.instance.FindAllItemToItemObject(testItemTable);
 
@@ -38,6 +40,8 @@ public class Inventory : MonoBehaviour
         }
 
         itemObjects[0].itemState = ItemState.BUY;
+        itemObjects[4].itemState = ItemState.NONE;
+        itemObjects[5].itemState = ItemState.NONE;
     }
 
     // List

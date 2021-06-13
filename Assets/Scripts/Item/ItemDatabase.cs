@@ -114,6 +114,18 @@ public class ItemDatabase : MonoBehaviour
             new SpriteResource("Images/Item/Material/RedCherryFlower"),
             new ItemValue(ItemGrade.COMMON, 30, 10)));
 
+        AddItem(new Item(100005, 
+            new ItemName("Leaves", "잎사귀"),
+            new ItemContent("null", "푸른 빛갈이 감도는 싱싱한 식물의 잎사귀다."),
+            new SpriteResource("Images/Item/Material/Leaves"),
+            new ItemValue(ItemGrade.COMMON, 30, 15)));
+            
+        AddItem(new Item(100006, 
+            new ItemName("Pointed Fangs", "뾰족한 송곳니"),
+            new ItemContent("null", "꽤나 딱딱하지만 미끈한 재질을 가진 송곳니다."),
+            new SpriteResource("Images/Item/Material/PointedFangs"),
+            new ItemValue(ItemGrade.UNCOMMON, 250, 125)));
+        
         AddItem(new Item(200001, 
             new ItemName("Red Tonic", "레드 토닉"),
             new ItemContent("null", "붉은 꽃을 추출하여 만든 원액을 붉은 깃털로 오랜 시간 정제하여 만든 진한 체력 회복 포션이다."),

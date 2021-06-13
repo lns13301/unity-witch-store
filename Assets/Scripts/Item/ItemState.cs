@@ -7,5 +7,7 @@ public enum ItemState
 {
     NONE,
     SELL,
-    BUY
+    BUY,
+    CRAFT,
+    RECIPE
 }
