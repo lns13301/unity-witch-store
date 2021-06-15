@@ -41,6 +41,16 @@ public class ItemDatabase : MonoBehaviour
     {
         return new Item(_itemFinderByName[name]);
     }
+    
+    private Item FindItem(int code)
+    {
+        return _itemFinderByCode[code];
+    }
+
+    private Item FindItem(string name)
+    {
+        return _itemFinderByName[name];
+    }
 
     public List<Item> FindAllItems()
     {
@@ -144,31 +154,44 @@ public class ItemDatabase : MonoBehaviour
                 new ItemValue.Builder().ItemGrade(ItemGrade.RARE).PurchasePrice(1500).SalePrice(750).build(),
                 new SpriteResource("Images/Item/Material/RedTonic"))
             .ItemStat(new ItemStat.Builder().ItemStatConsume(new ItemStatConsume.Builder().RecoveryHP(300).build()).build())
-            .ItemCraft(new ItemCraft.Builder().Recipes(
-                new List<List<Item>>()
-                {
-                    new List<Item>() {FindItemByName("잎사귀"), FindItemByName("붉은 앵두 꽃")},
-                    new List<Item>() {FindItemByName("잎사귀"), FindItemByName("잎사귀"), FindItemByName("잎사귀")},
-                }
-                ).build())
             .build());
 
+        InitializeRecipes();
         InitializeMaterials();
     }
 
-    public void InitializeMaterials()
+    private void InitializeRecipes()
+    {
+        FindItem("레드 토닉").AddRecipe(new ItemCraft.Builder().Recipes(
+            new List<List<Item>>()
+            {
+                new List<Item>() {FindItem("잎사귀"), FindItem("붉은 앵두 꽃")},
+                new List<Item>() {FindItem("잎사귀"), FindItem("잎사귀"), FindItem("잎사귀")},
+            }
+        ).build());
+        
+        Debug.Log(FindItem("레드 토닉").itemCraft.recipes.Count);
+    }
+
+    private void InitializeMaterials()
     {
         foreach (Item item in items)
         {
-            PutMaterials(item, item.itemCraft.FindMaterialCode());
+            PutMaterials(item);
         }
     }
 
-    private void PutMaterials(Item item, List<int> findMaterialCode)
+    private void PutMaterials(Item item)
     {
+        if (item.itemCraft == null)
+        {
+            return;
+        }
+        List<int> findMaterialCode = item.itemCraft.FindMaterialCode();
+
         foreach (int code in findMaterialCode)
         {
-            Item material = FindItemByCode(code);
+            Item material = FindItem(code);
             material.AddMaterial(item);
         }
     }

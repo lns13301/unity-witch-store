@@ -23,6 +23,7 @@ public class Item
         this.spriteResource = item.spriteResource;
         this.itemValue = item.itemValue;
         this.itemStat = item.itemStat;
+        this.itemCraft = item.itemCraft;
     }
 
     public Item(int code, ItemName itemName, ItemContent itemContent, SpriteResource spriteResource,
@@ -65,6 +66,7 @@ public class Item
             this.itemContent = itemContent;
             this.spriteResource = spriteResource;
             this.itemValue = itemValue;
+            this.itemCraft = new ItemCraft.Builder().build();
         }
 
         public Builder ItemStat(ItemStat itemStat)
@@ -93,6 +95,7 @@ public class Item
         this.spriteResource = builder.spriteResource;
         this.itemValue = builder.itemValue;
         this.itemStat = builder.itemStat;
+        this.itemCraft = builder.itemCraft;
     }
 
     public string Name(Language language)
@@ -117,8 +120,13 @@ public class Item
         }
     }
 
+    public void AddRecipe(ItemCraft craft)
+    {
+        itemCraft = new ItemCraft.Builder().Recipes(craft.recipes).build();
+    }
+    
     public void AddMaterial(Item item)
     {
-        this.itemCraft.AddMaterial(item);
+        itemCraft.AddMaterial(item);
     }
 }

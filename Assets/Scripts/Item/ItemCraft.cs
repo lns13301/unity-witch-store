@@ -12,6 +12,16 @@ public class ItemCraft
     {
         recipes.Add(items);
     }
+    
+    public void AddRecipe(List<List<Item>> items)
+    {
+        AddRecipe(MyStream<List<Item>>.Of(items).FlatMap(MyStream<Item>.Of).ToList());
+    }
+
+    public void AddRecipe(ItemCraft itemCraft)
+    {
+        this.recipes = itemCraft.recipes;
+    }
 
     public void AddMaterial(Item item)
     {
@@ -25,6 +35,8 @@ public class ItemCraft
 
         public Builder()
         {
+            recipes = new List<List<Item>>();
+            materials = new List<Item>();
         }
 
         public Builder Recipes(List<List<Item>> recipes)
@@ -53,6 +65,11 @@ public class ItemCraft
 
     public List<int> FindMaterialCode()
     {
+        if (recipes.Count == 0)
+        {
+            return new List<int>();
+        }
+        
         return MyStream<List<Item>>.Of(recipes)
             .FlatMap(MyStream<Item>.Of)
             .Map(item => item.code)
