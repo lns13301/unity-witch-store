@@ -7,13 +7,11 @@ public class RandomGenerator
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     // 시작 값 이상 끝 값 이하의 Int 형 반환

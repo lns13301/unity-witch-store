@@ -19,7 +19,6 @@ public class TMPManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void CreateText(string text, GameObject gameObject, Vector2 position, float fontSize = 3.5f, int index = 0)
@@ -41,7 +40,8 @@ public class TMPManager : MonoBehaviour
         }
     }
 
-    public void CreateText(string text, GameObject gameObject, Vector2 position, Color color, float fontSize = 3.5f, int index = 0)
+    public void CreateText(string text, GameObject gameObject, Vector2 position, Color color, float fontSize = 3.5f,
+        int index = 0)
     {
         GameObject tmp = Instantiate(tmps[index]);
         tmp.transform.SetParent(gameObject.transform.parent);

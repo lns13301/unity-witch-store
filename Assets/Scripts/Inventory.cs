@@ -17,7 +17,6 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     private void InitializeItemTest()
@@ -70,7 +69,8 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            SetItemObject(target, new ItemObject(itemObject.item, target.count - itemObject.count, itemObject.itemState));
+            SetItemObject(target,
+                new ItemObject(itemObject.item, target.count - itemObject.count, itemObject.itemState));
         }
     }
 
@@ -111,7 +111,7 @@ public class Inventory : MonoBehaviour
     {
         Dictionary<int, int> refresh = new Dictionary<int, int>();
 
-        
+
         for (int i = 0; i < itemObjects.Count; i++)
         {
             refresh.Add(itemObjects[i].item.code, i);
@@ -140,15 +140,29 @@ public class Inventory : MonoBehaviour
 
         return result;
     }
-    
+
+    public List<ItemObject> FindAllItemByCraft()
+    {
+        List<ItemObject> result = new List<ItemObject>();
+        List<ItemObject> found = FindAllItem(ItemState.NONE);
+
+        foreach (ItemObject itemObject in found)
+        {
+            if (itemObject.item.itemCraft.HasRecipe())
+            {
+                result.Add(itemObject);
+            }
+        }
+
+        return result;
+    }
+
     // File IO
     public void Save()
     {
-        
     }
-    
+
     public void Load()
     {
-        
     }
 }

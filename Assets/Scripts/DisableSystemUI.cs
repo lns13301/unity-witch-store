@@ -22,15 +22,15 @@ public class DisableSystemUI
         if (viewInstance != null)
         {
             viewInstance.Call("setSystemUiVisibility",
-                              SYSTEM_UI_FLAG_LAYOUT_STABLE
-                              | SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                              | SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                              | SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                              | SYSTEM_UI_FLAG_FULLSCREEN
-                              | SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+                SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                | SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | SYSTEM_UI_FLAG_FULLSCREEN
+                | SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
     }
-#endif  
+#endif
 
     public static void DisableNavUI()
     {

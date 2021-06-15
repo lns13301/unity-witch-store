@@ -57,7 +57,7 @@ public class SoundManager : MonoBehaviour
     public void PlayMusic(int index, bool absoluteStart = false)
     {
         Sound sound = musics[index];
-        
+
         sound.PlaySound(absoluteStart);
         playingMusics.Add(sound);
         DistinctSounds();
@@ -79,7 +79,7 @@ public class SoundManager : MonoBehaviour
         playingEffects.Add(sound);
         DistinctSounds();
     }
-    
+
     public void PlayEffectFindByName(string name)
     {
         try
@@ -100,12 +100,12 @@ public class SoundManager : MonoBehaviour
         try
         {
             Sound sound = soundMap[name];
-            
+
             if (absoluteStart)
             {
                 sound.StopSound();
             }
-            
+
             sound.PlaySound(absoluteStart);
             sound.GetComponent<AudioSource>().loop = true;
             playingMusics.Add(sound);
@@ -132,7 +132,7 @@ public class SoundManager : MonoBehaviour
             Debug.LogError("찾을 수 없음: " + name);
         }
     }
-    
+
     public void PlayOneShotEffectFindByName(string name)
     {
         try
@@ -151,20 +151,20 @@ public class SoundManager : MonoBehaviour
 
     public void StopMusic(int index)
     {
-        Sound sound = musics[index]; 
+        Sound sound = musics[index];
         sound.StopSound();
         playingMusics.Remove(sound);
     }
-    
+
     public void PauseMusic(int index)
     {
-        Sound sound = musics[index]; 
+        Sound sound = musics[index];
         sound.PauseSound();
     }
 
     public void StopEffectSound(int index)
     {
-        Sound sound = effects[index]; 
+        Sound sound = effects[index];
         sound.StopSound();
         playingEffects.Remove(sound);
     }
@@ -191,7 +191,7 @@ public class SoundManager : MonoBehaviour
         {
             PauseAllMusics();
         }
-        
+
         for (var i = playingEffects.Count - 1; i > -1; i--)
         {
             Sound sound = playingEffects[i];
@@ -209,7 +209,7 @@ public class SoundManager : MonoBehaviour
             playingMusics.Remove(sound);
         }
     }
-    
+
     public void PauseAllMusics()
     {
         for (var i = playingMusics.Count - 1; i > -1; i--)

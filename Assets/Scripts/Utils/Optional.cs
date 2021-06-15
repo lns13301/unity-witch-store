@@ -2,32 +2,39 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Optional<T> {
+public class Optional<T>
+{
     private T value;
     public bool IsPresent { get; private set; } = false;
 
-    private Optional() { }
+    private Optional()
+    {
+    }
 
-    public static Optional<T> Empty() {
+    public static Optional<T> Empty()
+    {
         return new Optional<T>();
     }
 
-    public static Optional<T> Of(T value) {
+    public static Optional<T> Of(T value)
+    {
         Optional<T> obj = new Optional<T>();
         obj.Set(value);
         return obj;
     }
 
-    public void Set(T value) {
+    public void Set(T value)
+    {
         this.value = value;
         IsPresent = true;
     }
 
-    public T Get() {
+    public T Get()
+    {
         return value;
     }
 
-    
+
     // For Unity get random chance value.
     public T Get(float chance)
     {
@@ -35,6 +42,7 @@ public class Optional<T> {
         {
             return value;
         }
+
         return Empty().Get();
     }
 }

@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
-    
+
     // Player UI
     public Text moneyText;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +19,6 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void UpdateMoney(long money)

@@ -10,7 +10,7 @@ public class NumberFormatter
     {
         return ChangeNumberFormat((long) number);
     }
-    
+
     public string ChangeNumberFormat(string number)
     {
         return ChangeNumberFormat(long.Parse(number));
@@ -53,7 +53,7 @@ public class NumberFormatter
 
         for (int i = c.Length - 1; i >= 0; i--)
         {
-            result[c.Length -1 - i] = c[i];
+            result[c.Length - 1 - i] = c[i];
         }
 
         return result;

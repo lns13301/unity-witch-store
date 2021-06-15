@@ -8,7 +8,7 @@ public class CraftImpl : PositionStrategy
         CanvasInitialize();
         return PlayerPosition.CRAFT;
     }
-    
+
     public void SoundInitialize()
     {
         SoundManager.instance.StopAllSounds(true);
@@ -19,6 +19,7 @@ public class CraftImpl : PositionStrategy
     {
         GameObject.Find("Background").transform.Find("Craft").gameObject.SetActive(true);
         GameObject.Find("SuperCanvas").transform.Find("CraftUI").gameObject.SetActive(true);
+        LightManager.instance.SetGlobalLightIntensity(0.2f);
     }
 
     public void CanvasDestroy()

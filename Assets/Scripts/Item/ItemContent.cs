@@ -12,7 +12,40 @@ public class ItemContent
         this.english = english;
         this.korean = korean;
     }
-    
+
+    public class Builder
+    {
+        public string english;
+        public string korean;
+
+        public Builder()
+        {
+        }
+
+        public Builder English(string english)
+        {
+            this.english = english;
+            return this;
+        }
+
+        public Builder Korean(string korean)
+        {
+            this.korean = korean;
+            return this;
+        }
+
+        public ItemContent build()
+        {
+            return new ItemContent(this);
+        }
+    }
+
+    public ItemContent(Builder builder)
+    {
+        this.english = english;
+        this.korean = korean;
+    }
+
     public string GetContent(Language language)
     {
         switch (language)

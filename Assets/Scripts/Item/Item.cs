@@ -12,7 +12,9 @@ public class Item
 
     public ItemValue itemValue;
     public ItemStat itemStat;
-    
+
+    public ItemCraft itemCraft;
+
     public Item(Item item)
     {
         this.code = item.code;
@@ -22,8 +24,9 @@ public class Item
         this.itemValue = item.itemValue;
         this.itemStat = item.itemStat;
     }
-    
-    public Item(int code, ItemName itemName, ItemContent itemContent, SpriteResource spriteResource, ItemValue itemValue)
+
+    public Item(int code, ItemName itemName, ItemContent itemContent, SpriteResource spriteResource,
+        ItemValue itemValue)
     {
         this.code = code;
         this.itemName = itemName;
@@ -31,8 +34,9 @@ public class Item
         this.spriteResource = spriteResource;
         this.itemValue = itemValue;
     }
-    
-    public Item(int code, ItemName itemName, ItemContent itemContent, SpriteResource spriteResource, ItemValue itemValue, ItemStat itemStat)
+
+    public Item(int code, ItemName itemName, ItemContent itemContent, SpriteResource spriteResource,
+        ItemValue itemValue, ItemStat itemStat)
     {
         this.code = code;
         this.itemName = itemName;
@@ -40,6 +44,55 @@ public class Item
         this.spriteResource = spriteResource;
         this.itemValue = itemValue;
         this.itemStat = itemStat;
+    }
+
+    public class Builder
+    {
+        public int code;
+        public ItemName itemName;
+        public ItemContent itemContent;
+        public SpriteResource spriteResource;
+
+        public ItemValue itemValue;
+        public ItemStat itemStat;
+
+        public ItemCraft itemCraft;
+
+        public Builder(int code, ItemName itemName, ItemContent itemContent, ItemValue itemValue, SpriteResource spriteResource)
+        {
+            this.code = code;
+            this.itemName = itemName;
+            this.itemContent = itemContent;
+            this.spriteResource = spriteResource;
+            this.itemValue = itemValue;
+        }
+
+        public Builder ItemStat(ItemStat itemStat)
+        {
+            this.itemStat = itemStat;
+            return this;
+        }
+
+        public Builder ItemCraft(ItemCraft itemCraft)
+        {
+            this.itemCraft = itemCraft;
+            return this;
+        }
+
+        public Item build()
+        {
+            return new Item(this);
+        }
+    }
+
+    public Item(Builder builder)
+    {
+        this.code = builder.code;
+        this.itemName = builder.itemName;
+        this.itemContent = builder.itemContent;
+        this.spriteResource = builder.spriteResource;
+        this.itemValue = builder.itemValue;
+        this.itemStat = builder.itemStat;
     }
 
     public string Name(Language language)
@@ -62,5 +115,10 @@ public class Item
             default:
                 return itemContent.english;
         }
+    }
+
+    public void AddMaterial(Item item)
+    {
+        this.itemCraft.AddMaterial(item);
     }
 }

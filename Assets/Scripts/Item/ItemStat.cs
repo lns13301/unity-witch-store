@@ -11,4 +11,29 @@ public class ItemStat
     {
         this.itemStatConsume = itemStatConsume;
     }
+
+    public class Builder
+    {
+        public ItemStatConsume itemStatConsume;
+
+        public Builder()
+        {
+        }
+
+        public Builder ItemStatConsume(ItemStatConsume itemStatConsume)
+        {
+            this.itemStatConsume = itemStatConsume;
+            return this;
+        }
+
+        public ItemStat build()
+        {
+            return new ItemStat(this);
+        }
+    }
+
+    public ItemStat(Builder builder)
+    {
+        this.itemStatConsume = builder.itemStatConsume;
+    }
 }

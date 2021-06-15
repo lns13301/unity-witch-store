@@ -9,12 +9,12 @@ public class TouchPad : MonoBehaviour
 
     [SerializeField] private Text inputField;
     [SerializeField] private string touchPanelNumberString;
-    
+
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
-        
+
         Initialize();
     }
 
@@ -28,12 +28,12 @@ public class TouchPad : MonoBehaviour
         touchPanelNumberString = value.ToString();
         ShowPanelNumber();
     }
-    
+
     private void ShowPanelNumber()
     {
         inputField.text = UtilManager.instance.numberFormatter.ChangeNumberFormat(touchPanelNumberString);
     }
-    
+
     private void RemoveEmptyNumber()
     {
         if (touchPanelNumberString == "0")
@@ -41,7 +41,7 @@ public class TouchPad : MonoBehaviour
             touchPanelNumberString = "";
         }
     }
-    
+
     public void AddZero()
     {
         RemoveEmptyNumber();
@@ -118,6 +118,7 @@ public class TouchPad : MonoBehaviour
         {
             return;
         }
+
         touchPanelNumberString += value;
         SoundManager.instance.PlayOneShotEffectFindByName("Calculator");
     }

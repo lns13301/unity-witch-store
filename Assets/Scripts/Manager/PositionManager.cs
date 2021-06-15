@@ -5,10 +5,10 @@ using UnityEngine;
 public class PositionManager : MonoBehaviour
 {
     public static PositionManager instance;
-    
+
     public List<GameObject> positionButtons;
     private PositionStrategy _registeredPositionStrategy;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +18,8 @@ public class PositionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
-    
+
     public void InitializePosition(PlayerPosition playerPosition)
     {
         InitializePosition(PositionStrategy(playerPosition));

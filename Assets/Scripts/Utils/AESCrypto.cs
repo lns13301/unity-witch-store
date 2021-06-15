@@ -24,7 +24,8 @@ public class AESCrypto : MonoBehaviour
 
         MemoryStream memoryStream = new MemoryStream();
 
-        ICryptoTransform encryptor = myRijndael.CreateEncryptor(Encoding.UTF8.GetBytes(KEY), Encoding.UTF8.GetBytes(KEY));
+        ICryptoTransform encryptor =
+            myRijndael.CreateEncryptor(Encoding.UTF8.GetBytes(KEY), Encoding.UTF8.GetBytes(KEY));
 
         CryptoStream cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write);
         cryptoStream.Write(plainBytes, 0, plainBytes.Length);
@@ -52,7 +53,8 @@ public class AESCrypto : MonoBehaviour
 
         MemoryStream memoryStream = new MemoryStream(encryptBytes);
 
-        ICryptoTransform decryptor = myRijndael.CreateDecryptor(Encoding.UTF8.GetBytes(KEY), Encoding.UTF8.GetBytes(KEY));
+        ICryptoTransform decryptor =
+            myRijndael.CreateDecryptor(Encoding.UTF8.GetBytes(KEY), Encoding.UTF8.GetBytes(KEY));
 
         CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read);
 

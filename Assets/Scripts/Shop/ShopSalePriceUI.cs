@@ -10,7 +10,7 @@ public class ShopSalePriceUI : MonoBehaviour
     [SerializeField] private GameObject closePanel;
     [SerializeField] private ShopItemUI shopItemUI;
     [SerializeField] private TouchPad touchPad;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +20,6 @@ public class ShopSalePriceUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     private void Initialize()
@@ -37,7 +36,7 @@ public class ShopSalePriceUI : MonoBehaviour
     public void OnSalePriceUI()
     {
         itemObject = shopItemUI.ItemObject;
-        
+
         shopItemUI.OffPanel();
         gameObject.SetActive(true);
         closePanel.SetActive(true);
@@ -47,13 +46,20 @@ public class ShopSalePriceUI : MonoBehaviour
 
     public void OffSalePriceUI()
     {
-        shopItemUI.OnPanel(itemObject);
-        SoundManager.instance.PlayOneShotEffectFindByName("ButtonClose");
-        animator.SetBool("isUIOn", false);
-        Invoke("Off", 0.5f);
-        closePanel.SetActive(false);
+        try
+        {
+            shopItemUI.OnPanel(itemObject);
+            SoundManager.instance.PlayOneShotEffectFindByName("ButtonClose");
+            animator.SetBool("isUIOn", false);
+            Invoke("Off", 0.5f);
+            closePanel.SetActive(false);
+        }
+        catch
+        {
+            Debug.Log("ShopPriceUI 켜세요.");
+        }
     }
-    
+
     public void Off()
     {
         gameObject.SetActive(false);

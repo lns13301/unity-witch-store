@@ -8,7 +8,7 @@ public class UtilManager : MonoBehaviour
 
     public RandomGenerator randomGenerator = new RandomGenerator();
     public NumberFormatter numberFormatter = new NumberFormatter();
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +18,5 @@ public class UtilManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 }

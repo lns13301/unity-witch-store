@@ -5,9 +5,9 @@ using UnityEngine;
 public class SaleManager : MonoBehaviour
 {
     private static float SALE_SPEED = 1.0f;
-    
+
     public static SaleManager instance;
-    
+
     public float saleSpeed;
 
     // Start is called before the first frame update
@@ -21,7 +21,6 @@ public class SaleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     private void Initialize()

@@ -27,7 +27,6 @@ public class Combo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void AddCombo(int value = 1)

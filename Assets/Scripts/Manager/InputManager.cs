@@ -9,7 +9,7 @@ public class InputManager : MonoBehaviour
     private static string DEFAULT_FIELD = "";
 
     public static InputManager instance;
-    
+
     public Text inputFieldText;
     [SerializeField] private TouchScreenKeyboard _keyboard;
     public Text targetText;

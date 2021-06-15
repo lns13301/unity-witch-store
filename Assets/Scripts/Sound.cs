@@ -6,7 +6,9 @@ public class Sound : MonoBehaviour
 {
     public string soundName;
     public bool isPause;
+
     private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +19,6 @@ public class Sound : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     private void Play()
@@ -49,7 +50,7 @@ public class Sound : MonoBehaviour
 
         isPause = false;
     }
-    
+
     public void PauseSound()
     {
         if (audioSource.isPlaying)
@@ -59,7 +60,7 @@ public class Sound : MonoBehaviour
 
         isPause = true;
     }
-    
+
     public void UnPauseSound()
     {
         if (isPause)

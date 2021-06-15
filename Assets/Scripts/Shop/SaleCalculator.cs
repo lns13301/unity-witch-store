@@ -5,23 +5,21 @@ using UnityEngine;
 public class SaleCalculator : MonoBehaviour
 {
     private static float DEFAULT_SALE_VALUE = 1000000;
-    
+
     public float saleWeight;
 
-    [SerializeField] private float saleSpeed; 
+    [SerializeField] private float saleSpeed;
     [SerializeField] private ItemObject playerItemObject;
     [SerializeField] private Item defaultItem;
 
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void Initialize(ItemObject itemObject)
@@ -33,7 +31,7 @@ public class SaleCalculator : MonoBehaviour
     IEnumerator Sale()
     {
         InitializeSale();
-        
+
         while (playerItemObject != null && playerItemObject.itemState == ItemState.SELL)
         {
             yield return new WaitForSeconds(NextCooldown());
@@ -52,7 +50,7 @@ public class SaleCalculator : MonoBehaviour
     private void ChangePlayerMoney()
     {
         PlayerData playerData = GameManager.instance.PlayerData;
-        
+
         playerData.AddMoney(defaultItem.itemValue.salePrice);
         UIManager.instance.UpdateMoney(playerData.money);
     }
@@ -81,7 +79,7 @@ public class SaleCalculator : MonoBehaviour
         try
         {
             return defaultItem.itemValue.salePrice / playerItemObject.item.itemValue.salePrice;
-        } 
+        }
         catch
         {
             return 0;

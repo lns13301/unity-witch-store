@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class CraftUI : MonoBehaviour, IPointerUpHandler
 {
     private static int CONTENT_COUNT = 3;
-    
+
     public static CraftUI instance;
 
     public Transform craftContent;
@@ -23,14 +23,13 @@ public class CraftUI : MonoBehaviour, IPointerUpHandler
     void Start()
     {
         instance = this;
-        
+
         Initialize();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     private void Initialize()
@@ -46,7 +45,7 @@ public class CraftUI : MonoBehaviour, IPointerUpHandler
     public void OnOffPanel(ItemState contentType)
     {
         SoundManager.instance.PlayOneShotEffectFindByName("BubblePop");
-        
+
         if (this.contentType != contentType && animator.GetBool("isUIOn"))
         {
             this.contentType = contentType;
@@ -59,16 +58,16 @@ public class CraftUI : MonoBehaviour, IPointerUpHandler
 
     public void ButtonCraft()
     {
-        ApplyInventory(ItemState.NONE);
+        ApplyInventory(ItemState.CRAFT);
         OnOffPanel(ItemState.CRAFT);
     }
-    
+
     public void ButtonRecipe()
     {
-        ApplyInventory(ItemState.NONE);
+        ApplyInventory(ItemState.RECIPE);
         OnOffPanel(ItemState.RECIPE);
     }
-    
+
     public void ButtonInventory()
     {
         ApplyInventory(ItemState.NONE);
@@ -77,7 +76,18 @@ public class CraftUI : MonoBehaviour, IPointerUpHandler
 
     public void ApplyInventory(ItemState itemState)
     {
-        itemObjects = playerInventory.FindAllItem(itemState);
+        if (itemState == ItemState.CRAFT)
+        {
+            itemObjects = playerInventory.FindAllItemByCraft();
+        }
+        else if (itemState == ItemState.RECIPE)
+        {
+        }
+        else
+        {
+            itemObjects = playerInventory.FindAllItem(itemState);
+        }
+
         Refresh(itemState);
     }
 
@@ -85,13 +95,13 @@ public class CraftUI : MonoBehaviour, IPointerUpHandler
     {
         Refresh(contentType);
     }
-    
+
     private void Refresh(ItemState itemState)
     {
         Transform content = ChangeContent(itemState);
-        
+
         content.parent.parent.gameObject.SetActive(true);
-        
+
         for (int i = 0; i < itemObjects.Count; i++)
         {
             content.GetChild(i).gameObject.SetActive(true);
@@ -107,11 +117,11 @@ public class CraftUI : MonoBehaviour, IPointerUpHandler
     private Transform ChangeContent(ItemState itemState)
     {
         Transform content;
-        
+
         craftContent.parent.parent.gameObject.SetActive(false);
         recipeContent.parent.parent.gameObject.SetActive(false);
         inventoryContent.parent.parent.gameObject.SetActive(false);
-        
+
         switch (itemState)
         {
             case ItemState.CRAFT:
@@ -120,14 +130,14 @@ public class CraftUI : MonoBehaviour, IPointerUpHandler
             case ItemState.RECIPE:
                 content = recipeContent;
                 break;
-            default: 
+            default:
                 content = inventoryContent;
                 break;
         }
 
         return content;
     }
-    
+
     public void OnPointerUp(PointerEventData eventData)
     {
         ButtonCraft();

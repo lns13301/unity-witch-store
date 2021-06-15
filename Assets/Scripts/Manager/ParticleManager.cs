@@ -34,7 +34,6 @@ public class ParticleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void CreateParticle(Vector2 position, GameObject gameObject, int index = 0)

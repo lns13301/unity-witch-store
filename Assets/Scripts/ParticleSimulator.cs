@@ -6,8 +6,8 @@ public class ParticleSimulator : MonoBehaviour
 {
     private float lastInterval;
     private ParticleSystem pSystem;
-    private float deltaTime; 
- 
+    private float deltaTime;
+
     void Awake()
     {
         lastInterval = Time.realtimeSinceStartup;

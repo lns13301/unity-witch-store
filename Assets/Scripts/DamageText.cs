@@ -85,7 +85,7 @@ public class DamageText : MonoBehaviour
     {
         Destroy(gameObject);
     }
-    
+
     public void SetDamage(int damage)
     {
         this.damage = damage;
@@ -116,7 +116,7 @@ public class DamageText : MonoBehaviour
         {
             return;
         }
-      
+
         speedX = (float) (Random.Range(TEXT_MOVING_X_MIN, TEXT_MOVING_X_MAX) * TEXT_MOVING_UNIT);
     }
 

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ShopItemUI : MonoBehaviour
 {
     private static string NEW_LINE = "\n";
-    
+
     public static ShopItemUI instance;
 
     [SerializeField] private GameObject panel;
@@ -20,38 +20,37 @@ public class ShopItemUI : MonoBehaviour
     [SerializeField] private Text content;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject closePanel;
-    
+
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
-        
+
         Initialize();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     private void Initialize()
     {
         panel = gameObject;
         animator = GetComponent<Animator>();
-        
+
         shopSlot = transform.GetChild(1).GetComponent<ShopSlot>();
         contentPanel = transform.GetChild(2);
         panel.SetActive(false);
-        
+
         price = shopSlot.transform.Find("Price").GetComponent<Text>();
         content = contentPanel.Find("Content").GetComponent<Text>();
         title = content.transform.Find("Title").GetComponent<Text>();
-        
+
         closePanel = transform.parent.Find("CloseShopItemUI").gameObject;
         closePanel.SetActive(false);
     }
-    
+
     public void OnPanel(ItemObject itemObject)
     {
         OnPanel(shopSlot, itemObject);
@@ -64,8 +63,8 @@ public class ShopItemUI : MonoBehaviour
         this.itemObject = itemObject;
         Language language = GameManager.instance.PlayerData.language;
         this.shopSlot.SetItemObject(itemObject);
-        price.text = "판매가 :  " + 
-                     UtilManager.instance.numberFormatter.ChangeNumberFormat(itemObject.item.itemValue.salePrice) + 
+        price.text = "판매가 :  " +
+                     UtilManager.instance.numberFormatter.ChangeNumberFormat(itemObject.item.itemValue.salePrice) +
                      " 골드";
         title.text = itemObject.item.Name(language);
         content.text = "등급 : " +

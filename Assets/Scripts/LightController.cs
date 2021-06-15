@@ -20,7 +20,6 @@ public class LightController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     IEnumerator Repeat()

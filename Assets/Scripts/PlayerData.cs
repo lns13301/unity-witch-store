@@ -40,43 +40,43 @@ public class PlayerData
             this.language = language;
             return this;
         }
-        
+
         public Builder PlayerPosition(PlayerPosition playerPosition)
         {
             this.playerPosition = playerPosition;
             return this;
         }
-        
+
         public Builder Id(long id)
         {
             this.id = id;
             return this;
         }
-        
+
         public Builder Token(string token)
         {
             this.token = token;
             return this;
         }
-        
+
         public Builder Nickname(string nickname)
         {
             this.nickname = nickname;
             return this;
         }
-        
+
         public Builder Money(long money)
         {
             this.money = money;
             return this;
         }
-        
+
         public Builder Cash(int cash)
         {
             this.cash = cash;
             return this;
         }
-        
+
         public PlayerData build()
         {
             return new PlayerData(this);

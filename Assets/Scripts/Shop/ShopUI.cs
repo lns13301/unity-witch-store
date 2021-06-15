@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShopUI : MonoBehaviour
 {
     private static int CONTENT_COUNT = 3;
-    
+
     public static ShopUI instance;
 
     public Transform saleContent;
@@ -22,14 +22,13 @@ public class ShopUI : MonoBehaviour
     void Start()
     {
         instance = this;
-        
+
         Initialize();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     private void Initialize()
@@ -44,7 +43,7 @@ public class ShopUI : MonoBehaviour
     public void OnOffPanel(ItemState contentType)
     {
         SoundManager.instance.PlayOneShotEffectFindByName("BubblePop");
-        
+
         if (this.contentType != contentType && animator.GetBool("isUIOn"))
         {
             this.contentType = contentType;
@@ -60,13 +59,13 @@ public class ShopUI : MonoBehaviour
         ApplyInventory(ItemState.SELL);
         OnOffPanel(ItemState.SELL);
     }
-    
+
     public void ButtonPurchase()
     {
         ApplyInventory(ItemState.BUY);
         OnOffPanel(ItemState.BUY);
     }
-    
+
     public void ButtonInventory()
     {
         ApplyInventory(ItemState.NONE);
@@ -83,13 +82,13 @@ public class ShopUI : MonoBehaviour
     {
         Refresh(contentType);
     }
-    
+
     private void Refresh(ItemState itemState)
     {
         Transform content = ChangeContent(itemState);
-        
+
         content.parent.parent.gameObject.SetActive(true);
-        
+
         for (int i = 0; i < itemObjects.Count; i++)
         {
             content.GetChild(i).gameObject.SetActive(true);
@@ -109,11 +108,11 @@ public class ShopUI : MonoBehaviour
     private Transform ChangeContent(ItemState itemState)
     {
         Transform content;
-        
+
         saleContent.parent.parent.gameObject.SetActive(false);
         purchaseContent.parent.parent.gameObject.SetActive(false);
         inventoryContent.parent.parent.gameObject.SetActive(false);
-        
+
         switch (itemState)
         {
             case ItemState.SELL:
@@ -122,7 +121,7 @@ public class ShopUI : MonoBehaviour
             case ItemState.BUY:
                 content = purchaseContent;
                 break;
-            default: 
+            default:
                 content = inventoryContent;
                 break;
         }

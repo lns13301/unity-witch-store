@@ -68,7 +68,8 @@ public class CameraController : MonoBehaviour
         }
 
         transform.position = shackingBackUpPosition;
-        transform.position = new Vector3(paddlePosition.x * resolutionDivideValue, transform.position.y, transform.position.z);
+        transform.position = new Vector3(paddlePosition.x * resolutionDivideValue, transform.position.y,
+            transform.position.z);
     }
 
     public void ShakeCamera()
@@ -92,7 +93,8 @@ public class CameraController : MonoBehaviour
         //Vector3 paddlePosition = Paddle.instance.transform.position;
 
         transform.position = new Vector3(
-            Random.Range((transform.position.x * resolutionDivideValue) - shakePower.x, (transform.position.x * resolutionDivideValue) + shakePower.x)
+            Random.Range((transform.position.x * resolutionDivideValue) - shakePower.x,
+                (transform.position.x * resolutionDivideValue) + shakePower.x)
             , Random.Range(cameraPosition.y - shakePower.y, cameraPosition.y + shakePower.y),
             POSITION_Z);
 
