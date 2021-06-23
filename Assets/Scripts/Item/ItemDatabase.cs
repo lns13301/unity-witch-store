@@ -152,7 +152,7 @@ public class ItemDatabase : MonoBehaviour
                 new ItemName.Builder().English("Red Tonic").Korean("레드 토닉").build(),
                 new ItemContent.Builder().English("null").Korean("붉은 꽃을 추출하여 만든 원액을 붉은 깃털로 오랜 시간 정제하여 만든 진한 체력 회복 포션이다.").build(),
                 new ItemValue.Builder().ItemGrade(ItemGrade.RARE).PurchasePrice(1500).SalePrice(750).build(),
-                new SpriteResource("Images/Item/Material/RedTonic"))
+                new SpriteResource("Images/Item/Consume/RedTonic"))
             .ItemStat(new ItemStat.Builder().ItemStatConsume(new ItemStatConsume.Builder().RecoveryHP(300).build()).build())
             .build());
 
