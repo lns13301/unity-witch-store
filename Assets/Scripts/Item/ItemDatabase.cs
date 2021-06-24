@@ -80,6 +80,18 @@ public class ItemDatabase : MonoBehaviour
 
         return result;
     }
+    
+    public List<ItemObject> FindAllItemToItemObject()
+    {
+        List<ItemObject> result = new List<ItemObject>();
+
+        foreach (Item item in items)
+        {
+            result.Add(new ItemObject(item, 1));
+        }
+
+        return result;
+    }
 
     public List<ItemObject> FindAllItemToItemObject(Dictionary<int, int> itemCodeAndCounts)
     {
