@@ -187,6 +187,18 @@ public class ItemDatabase : MonoBehaviour
                 new List<Item>() {FindItem("홍조의 깃털"), FindItem("레드 토닉")},
             }
         ).build());
+        FindItem("잎사귀").AddRecipe(new ItemCraft.Builder().Recipes(
+            new List<List<Item>>()
+            {
+                new List<Item>() {FindItem("뾰족한 송곳니"), FindItem("붉은 앵두 꽃")},
+            }
+        ).build());
+        FindItem("개구리 다리").AddRecipe(new ItemCraft.Builder().Recipes(
+            new List<List<Item>>()
+            {
+                new List<Item>() {FindItem("뾰족한 송곳니")},
+            }
+        ).build());
         
         Debug.Log(FindItem("레드 토닉").itemCraft.recipes.Count);
     }
