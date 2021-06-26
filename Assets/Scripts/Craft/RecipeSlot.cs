@@ -11,6 +11,7 @@ public class RecipeSlot : MonoBehaviour
     [SerializeField] private Image slotImage;
 
     [SerializeField] private ItemObject itemObject;
+    [SerializeField] private int sameItemRecipeIndex;
 
     private void Start()
     {
@@ -26,8 +27,9 @@ public class RecipeSlot : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void SetItemObject(ItemObject itemObject)
+    public void SetItemObject(ItemObject itemObject, int sameItemRecipeIndex = 0)
     {
+        this.sameItemRecipeIndex = sameItemRecipeIndex;
         this.itemObject = itemObject;
         Invoke("Refresh", 0.01f);
     }
@@ -35,7 +37,7 @@ public class RecipeSlot : MonoBehaviour
     public void Refresh()
     {
         RefreshResult();
-        RefreshRecipe(0);
+        RefreshRecipe(sameItemRecipeIndex);
     }
 
     private void RefreshResult()

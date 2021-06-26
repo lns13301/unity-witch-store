@@ -22,12 +22,18 @@ public class RecipeTabImpl : ItemTabStrategy
 
     private int RegisterItemIfHasRecipe(ItemObject itemObject, Transform content, int contentTransformIndex)
     {
-        if (itemObject.item.itemCraft.HasRecipe())
+        ItemCraft itemCraft = itemObject.item.itemCraft;
+        if (itemCraft.HasRecipe())
         {
-            Transform targetSlot = content.GetChild(contentTransformIndex);
-            targetSlot.gameObject.SetActive(true);
-            targetSlot.GetComponent<RecipeSlot>().SetItemObject(itemObject);
-            return contentTransformIndex + 1;
+            int recipesCount = itemCraft.recipes.Count;
+            
+            for (int i = 0; i < recipesCount; i++)
+            {
+                Transform targetSlot = content.GetChild(contentTransformIndex + i);
+                targetSlot.gameObject.SetActive(true);
+                targetSlot.GetComponent<RecipeSlot>().SetItemObject(itemObject, i);
+            }
+            return contentTransformIndex + recipesCount;
         }
 
         return contentTransformIndex;
