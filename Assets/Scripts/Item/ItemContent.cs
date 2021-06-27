@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class ItemContent
 {
     public string english;
@@ -42,11 +43,11 @@ public class ItemContent
 
     public ItemContent(Builder builder)
     {
-        this.english = english;
-        this.korean = korean;
+        this.english = builder.english;
+        this.korean = builder.korean;
     }
 
-    public string GetContent(Language language)
+    public string GetName(Language language)
     {
         switch (language)
         {

@@ -72,6 +72,7 @@ public class ShopItemUI : MonoBehaviour
                        NEW_LINE +
                        NEW_LINE +
                        itemObject.item.Content(language);
+        
         panel.SetActive(true);
         animator.SetBool("isUIOn", true);
         closePanel.SetActive(true);
