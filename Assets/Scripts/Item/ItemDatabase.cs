@@ -178,7 +178,7 @@ public class ItemDatabase : MonoBehaviour
             new List<List<Item>>()
             {
                 new List<Item>() {FindItem("잎사귀"), FindItem("붉은 앵두 꽃")},
-                new List<Item>() {FindItem("잎사귀"), FindItem("잎사귀"), FindItem("잎사귀")},
+                //new List<Item>() {FindItem("잎사귀"), FindItem("잎사귀"), FindItem("잎사귀")},
             }
         ).build());
         

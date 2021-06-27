@@ -24,8 +24,9 @@ public class RecipeTabImpl : ItemTabStrategy
     {
         if (itemObject.item.itemCraft.HasRecipe())
         {
-            content.GetChild(contentTransformIndex).gameObject.SetActive(true);
-            content.GetChild(contentTransformIndex).GetComponent<RecipeSlot>().SetItemObject(itemObject);
+            Transform targetSlot = content.GetChild(contentTransformIndex);
+            targetSlot.gameObject.SetActive(true);
+            targetSlot.GetComponent<RecipeSlot>().SetItemObject(itemObject);
             return contentTransformIndex + 1;
         }
 
