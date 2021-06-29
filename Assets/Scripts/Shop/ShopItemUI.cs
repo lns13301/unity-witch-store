@@ -11,11 +11,9 @@ public class ShopItemUI : MonoBehaviour
     public static ShopItemUI instance;
 
     [SerializeField] private GameObject panel;
-    [SerializeField] private ShopSlot shopSlot;
-    [SerializeField] private ShopSlot shopSlotInShop;
+    [SerializeField] private ShopUISlot shopUISlot;
     [SerializeField] private Transform contentPanel;
     [SerializeField] private ItemObject itemObject;
-    [SerializeField] private Text price;
     [SerializeField] private Text title;
     [SerializeField] private Text content;
     [SerializeField] private Animator animator;
@@ -39,11 +37,10 @@ public class ShopItemUI : MonoBehaviour
         panel = gameObject;
         animator = GetComponent<Animator>();
 
-        shopSlot = transform.GetChild(1).GetComponent<ShopSlot>();
+        shopUISlot = transform.GetChild(1).GetComponent<ShopUISlot>();
         contentPanel = transform.GetChild(2);
         panel.SetActive(false);
-
-        price = shopSlot.transform.Find("Price").GetComponent<Text>();
+        
         content = contentPanel.Find("Content").GetComponent<Text>();
         title = content.transform.Find("Title").GetComponent<Text>();
 
@@ -51,21 +48,18 @@ public class ShopItemUI : MonoBehaviour
         closePanel.SetActive(false);
     }
 
-    public void OnPanel(ItemObject itemObject)
+    public void Refresh()
     {
-        OnPanel(shopSlot, itemObject);
+        shopUISlot.Refresh();
     }
 
-    public void OnPanel(ShopSlot shopSlot, ItemObject itemObject)
+    public void OnPanel(ItemObject itemObject)
     {
         SoundManager.instance.PlayOneShotEffectFindByName("Paper");
-        shopSlotInShop = shopSlot;
         this.itemObject = itemObject;
         Language language = GameManager.instance.PlayerData.language;
-        this.shopSlot.SetItemObject(itemObject);
-        price.text = "판매가 :  " +
-                     UtilManager.instance.numberFormatter.ChangeNumberFormat(itemObject.item.itemValue.salePrice) +
-                     " 골드";
+        shopUISlot.SetItemObject(itemObject); // shop item UI slot refresh
+
         title.text = itemObject.item.Name(language);
         content.text = "등급 : " +
                        ItemGradeFinder.instance.FindName(itemObject.item.itemValue.itemGrade, language) +
@@ -82,7 +76,6 @@ public class ShopItemUI : MonoBehaviour
     {
         SoundManager.instance.PlayOneShotEffectFindByName("ButtonClose");
         SoundManager.instance.PlayOneShotEffectFindByName("Paper");
-        shopSlotInShop.Refresh();
         Invoke("Off", 0.5f);
         animator.SetBool("isUIOn", false);
         closePanel.SetActive(false);

@@ -103,6 +103,8 @@ public class ShopUI : MonoBehaviour
         {
             content.GetChild(i).gameObject.SetActive(false);
         }
+
+        ShopItemUI.instance.Refresh();
     }
 
     private Transform ChangeContent(ItemState itemState)

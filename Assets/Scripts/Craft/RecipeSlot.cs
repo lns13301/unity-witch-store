@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class RecipeSlot : MonoBehaviour
 {
+    [SerializeField] private ItemSlot itemSlot;
     [SerializeField] private Image resultImage;
     [SerializeField] private Text resultName;
     [SerializeField] private Text resultCount;
@@ -20,6 +21,7 @@ public class RecipeSlot : MonoBehaviour
 
     private void Initialize()
     {
+        itemSlot = transform.GetChild(0).GetComponent<ItemSlot>();
         resultImage = transform.GetChild(0).GetChild(0).GetComponent<Image>();
         resultName = transform.GetChild(0).GetChild(1).GetComponent<Text>();
         resultCount = transform.GetChild(0).GetChild(2).GetComponent<Text>();
@@ -43,6 +45,7 @@ public class RecipeSlot : MonoBehaviour
     private void RefreshResult()
     {
         gameObject.SetActive(true);
+        itemSlot.SetItemObject(itemObject);
         resultImage.sprite = itemObject.item.spriteResource.sprite;
         resultName.text = itemObject.item.itemName.GetName(GameManager.instance.PlayerData.language);
         resultCount.text = itemObject.count.ToString();
@@ -66,6 +69,7 @@ public class RecipeSlot : MonoBehaviour
             }
             
             materialSlot.gameObject.SetActive(true);
+            materialSlot.GetComponent<ItemSlot>().SetItemObject(new ItemObject(findItemByCode));
             materialSlot.GetChild(0).GetComponent<Image>().sprite = findItemByCode.spriteResource.sprite;
             materialSlot.GetChild(1).GetComponent<Text>().text = findItemByCode.itemName.GetName(language);
             materialSlot.GetChild(2).GetComponent<Text>().text = "1"; // 추후 재료 개수 설정 시 변경할 것!

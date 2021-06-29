@@ -23,7 +23,7 @@ public class ItemObject
         this.itemState = itemObject.itemState;
     }
 
-    public ItemObject(Item item, int count)
+    public ItemObject(Item item, int count = 1)
     {
         this.item = item;
         this.count = count;

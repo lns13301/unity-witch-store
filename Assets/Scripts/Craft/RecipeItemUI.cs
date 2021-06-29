@@ -46,7 +46,7 @@ public class RecipeItemUI : MonoBehaviour
         content = contentPanel.Find("Content").GetComponent<Text>();
         title = content.transform.Find("Title").GetComponent<Text>();
 
-        closePanel = transform.parent.Find("CloseShopItemUI").gameObject;
+        closePanel = transform.parent.Find("CloseItemUI").gameObject;
         closePanel.SetActive(false);
     }
 
