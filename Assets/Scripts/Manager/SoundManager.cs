@@ -8,12 +8,14 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
-    [SerializeField] private Sound[] musics;
-    [SerializeField] private Sound[] effects;
+    [SerializeField] private List<Sound> musics;
+    [SerializeField] private List<Sound> effects;
+    [SerializeField] private List<Sound> voices;
     [SerializeField] private List<Sound> playingMusics;
     [SerializeField] private List<Sound> playingEffects;
+    [SerializeField] private List<Sound> playingVoices;
 
-    public Dictionary<string, Sound> soundMap;
+    public Dictionary<string, List<Sound>> soundMap;
 
     public int timer;
 
@@ -21,36 +23,60 @@ public class SoundManager : MonoBehaviour
     {
         instance = this;
 
-        musics = new Sound[transform.GetChild(0).childCount];
-        effects = new Sound[transform.GetChild(1).childCount];
-        soundMap = new Dictionary<string, Sound>();
+        musics = new List<Sound>();
+        effects = new List<Sound>();
+        voices = new List<Sound>();
+        soundMap = new Dictionary<string, List<Sound>>();
 
         // 음악 등록
-        for (int i = 0; i < transform.GetChild(0).childCount; i++)
+        RegisterSound(transform.GetChild(0), musics, SoundType.MUSIC);
+        // 효과음 등록
+        RegisterSound(transform.GetChild(1), effects, SoundType.EFFECT);
+        // 보이스 등록
+        RegisterSound(transform.GetChild(2), voices, SoundType.VOICE);
+    }
+
+    private void RegisterSound(Transform targetTransform, List<Sound> sounds, SoundType soundType)
+    {
+        for (int i = 0; i < targetTransform.childCount; i++)
         {
-            musics[i] = transform.GetChild(0).GetChild(i).GetComponent<Sound>();
+            Sound sound = RegisterSoundEach(targetTransform.GetChild(i).GetComponent<Sound>(), soundType);
             try
             {
-                soundMap.Add(musics[i].soundName, musics[i]);
+                RegisterMap(sound.soundName, sound);
             }
             catch
             {
-                soundMap.Add(musics[i].gameObject.name, musics[i]);
+                RegisterMap(sound.gameObject.name, sound);
             }
         }
+    }
 
-        // 효과음 등록
-        for (int i = 0; i < transform.GetChild(1).childCount; i++)
+    private Sound RegisterSoundEach(Sound sound, SoundType soundType)
+    {
+        switch (soundType)
         {
-            effects[i] = transform.GetChild(1).GetChild(i).GetComponent<Sound>();
-            try
-            {
-                soundMap.Add(effects[i].soundName, effects[i]);
-            }
-            catch
-            {
-                soundMap.Add(effects[i].gameObject.name, effects[i]);
-            }
+            case SoundType.VOICE:
+                voices.Add(sound);
+                return sound;
+            case SoundType.MUSIC:
+                musics.Add(sound);
+                return sound;
+            default:
+                effects.Add(sound);
+                return sound;
+        }
+    }
+
+    private void RegisterMap(String key, Sound sound)
+    {
+        if (soundMap.ContainsKey(key))
+        {
+            soundMap[key].Add(sound);
+        }
+        else
+        {
+            soundMap.Add(key, new List<Sound>() {sound});
         }
     }
 
@@ -70,6 +96,14 @@ public class SoundManager : MonoBehaviour
         playingEffects.Add(sound);
         DistinctSounds();
     }
+    
+    public void PlayVoiceSound(int index)
+    {
+        Sound sound = voices[index];
+        sound.PlaySound();
+        playingVoices.Add(sound);
+        DistinctSounds();
+    }
 
     public void PlayOneShotEffectSound(int index)
     {
@@ -79,14 +113,38 @@ public class SoundManager : MonoBehaviour
         playingEffects.Add(sound);
         DistinctSounds();
     }
+    
+    public void PlayOneShotVoiceSound(int index)
+    {
+        Sound sound = voices[index];
+        sound.StopSound();
+        sound.PlaySound();
+        playingVoices.Add(sound);
+        DistinctSounds();
+    }
 
     public void PlayEffectFindByName(string name)
     {
         try
         {
-            Sound sound = soundMap[name];
+            Sound sound = PickRandomSound(soundMap[name]);
             sound.PlaySound();
             playingEffects.Add(sound);
+            DistinctSounds();
+        }
+        catch (NullReferenceException)
+        {
+            Debug.LogError("찾을 수 없음: " + name);
+        }
+    }
+    
+    public void PlayVoiceFindByName(string name)
+    {
+        try
+        {
+            Sound sound = PickRandomSound(soundMap[name]);
+            sound.PlaySound();
+            playingVoices.Add(sound);
             DistinctSounds();
         }
         catch (NullReferenceException)
@@ -99,7 +157,7 @@ public class SoundManager : MonoBehaviour
     {
         try
         {
-            Sound sound = soundMap[name];
+            Sound sound = PickRandomSound(soundMap[name]);
 
             if (absoluteStart)
             {
@@ -121,7 +179,7 @@ public class SoundManager : MonoBehaviour
     {
         try
         {
-            Sound sound = soundMap[name];
+            Sound sound = PickRandomSound(soundMap[name]);
             sound.StopSound();
             sound.PlaySound();
             playingMusics.Add(sound);
@@ -137,7 +195,7 @@ public class SoundManager : MonoBehaviour
     {
         try
         {
-            Sound sound = soundMap[name];
+            Sound sound = PickRandomSound(soundMap[name]);
             sound.StopSound();
             sound.PlaySound();
             playingEffects.Add(sound);
@@ -179,6 +237,7 @@ public class SoundManager : MonoBehaviour
     {
         playingMusics = new List<Sound>(new HashSet<Sound>(playingMusics));
         playingEffects = new List<Sound>(new HashSet<Sound>(playingEffects));
+        playingVoices = new List<Sound>(new HashSet<Sound>(playingVoices));
     }
 
     public void StopAllSounds(bool absoluteStop = false)
@@ -197,6 +256,13 @@ public class SoundManager : MonoBehaviour
             Sound sound = playingEffects[i];
             sound.StopSound();
             playingEffects.Remove(sound);
+        }
+        
+        for (var i = playingVoices.Count - 1; i > -1; i--)
+        {
+            Sound sound = playingVoices[i];
+            sound.StopSound();
+            playingVoices.Remove(sound);
         }
     }
 
@@ -223,4 +289,30 @@ public class SoundManager : MonoBehaviour
     {
         PlayEffectSound(0);
     }
+
+    public Sound PickRandomSound(List<Sound> sounds, bool isSelected = false, int selectedIndex = 0)
+    {
+        if (sounds.Count == 0)
+        {
+            throw new IndexOutOfRangeException("Empty sound index out of bound!");
+        }
+
+        if (isSelected)
+        {
+            return sounds[selectedIndex];
+        }
+        
+        if (sounds.Count == 1)
+        {
+            return sounds[0];
+        }
+        return MyStream<Sound>.Of(sounds).Shuffle().ToList()[0];
+    }
+}
+
+public enum SoundType
+{
+    MUSIC,
+    EFFECT,
+    VOICE
 }

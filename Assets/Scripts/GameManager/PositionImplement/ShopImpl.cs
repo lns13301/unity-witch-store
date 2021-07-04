@@ -17,6 +17,7 @@ public class ShopImpl : PositionStrategy
         SoundManager.instance.StopAllSounds();
         SoundManager.instance.PlayMusicFindByName("Bird");
         SoundManager.instance.PlayMusicFindByName("Shop");
+        SoundManager.instance.PlayVoiceFindByName("ShopVoice");
     }
 
     public void CanvasInitialize()
