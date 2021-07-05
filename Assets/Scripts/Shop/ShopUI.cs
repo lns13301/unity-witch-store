@@ -130,4 +130,12 @@ public class ShopUI : MonoBehaviour
 
         return content;
     }
+
+    public void OffPanel()
+    {
+        if (animator.GetBool("isUIOn"))
+        {
+            animator.SetBool("isUIOn", !animator.GetBool("isUIOn"));
+        }
+    }
 }

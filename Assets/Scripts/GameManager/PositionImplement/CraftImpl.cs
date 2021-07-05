@@ -25,6 +25,7 @@ public class CraftImpl : PositionStrategy
     public void CanvasDestroy()
     {
         GameObject.Find("Background").transform.Find("Craft").gameObject.SetActive(false);
+        //GameObject.Find("SuperCanvas").transform.Find("Craft").Find("CraftUI").GetComponent<CraftUI>().OffPanel();
         GameObject.Find("SuperCanvas").transform.Find("Craft").Find("CraftUI").gameObject.SetActive(false);
     }
 }

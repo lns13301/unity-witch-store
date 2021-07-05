@@ -24,6 +24,7 @@ public class ShopImpl : PositionStrategy
     {
         GameObject.Find("Background").transform.Find("Shop").gameObject.SetActive(true);
         LightManager.instance.SetGlobalLightIntensity(0.7f);
+        GameObject.Find("Canvas").transform.Find("PlayerShopUI").gameObject.SetActive(true);
 
         //Vector3 position = GameObject.Find("Canvas").transform.Find("PlayerShopUI").GetComponent<RectTransform>().position;
         //GameObject.Find("Canvas").transform.Find("PlayerShopUI").GetComponent<RectTransform>().localPosition = new Vector2(position.x, UI_DEFAULT_RANGE);
@@ -32,6 +33,8 @@ public class ShopImpl : PositionStrategy
     public void CanvasDestroy()
     {
         GameObject.Find("Background").transform.Find("Shop").gameObject.SetActive(false);
+        //GameObject.Find("Canvas").transform.Find("PlayerShopUI").GetComponent<ShopUI>().OffPanel();
+        GameObject.Find("Canvas").transform.Find("PlayerShopUI").gameObject.SetActive(false);
 
         //Vector3 position = GameObject.Find("Canvas").transform.Find("PlayerShopUI").GetComponent<RectTransform>().position;
         //GameObject.Find("Canvas").transform.Find("PlayerShopUI").GetComponent<RectTransform>().localPosition = new Vector2(position.x, UI_OUT_OF_RANGE);

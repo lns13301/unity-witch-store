@@ -149,4 +149,12 @@ public class CraftUI : MonoBehaviour, IPointerUpHandler
     {
         ButtonCraft();
     }
+
+    public void OffPanel()
+    {
+        if (this.contentType != contentType && animator.GetBool("isUIOn"))
+        {
+            animator.SetBool("isUIOn", !animator.GetBool("isUIOn"));
+        }
+    }
 }
